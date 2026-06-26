@@ -1,0 +1,214 @@
+---
+import { translations, languages } from '../i18n/translations';
+const t = translations.en;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+
+  <title>Strategy Tracker — Lottery Statistics & Expected Value Analysis</title>
+  <meta name="description" content="Strategy Tracker gives lottery players real statistical insights: expected value per draw, number frequency analysis, birthday bias detection and more. Available for UK, German, Canadian, Irish, Austrian and Swiss lotteries." />
+  <meta name="keywords" content="lottery statistics, lottery expected value, number frequency analysis, lotto strategy, lottery app, UK lotto, German lotto, Canadian 6/49" />
+  <link rel="canonical" href="https://strategy-tracker.adrianlawley.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Strategy Tracker — Lottery Statistics & EV Analysis" />
+  <meta property="og:description" content="Real statistical insights for lottery players. Expected value, number frequency, birthday bias and more. iOS app." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://strategy-tracker.adrianlawley.com/" />
+  <meta property="og:image" content="https://strategy-tracker.adrianlawley.com/images/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Strategy Tracker — Lottery Statistics & EV Analysis" />
+  <meta name="twitter:description" content="Real statistical insights for lottery players. iOS app." />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Strategy Tracker",
+      "operatingSystem": "iOS",
+      "applicationCategory": "UtilitiesApplication",
+      "description": "Lottery statistics app providing expected value analysis, number frequency, and draw history for UK, German, Canadian, Irish, Austrian and Swiss lotteries.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    })}
+  </script>
+
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Strategy Tracker</span>
+    <ul class="nav-links">
+      <li><a href="#features" data-i18n="nav_features">Features</a></li>
+      <li><a href="#how" data-i18n="nav_how">How It Works</a></li>
+      <li><a href="#download" data-i18n="nav_download">Download</a></li>
+    </ul>
+    <select class="lang-select" id="lang-switcher" aria-label="Language">
+      {Object.entries(languages).map(([code, label]) => (
+        <option value={code}>{label}</option>
+      ))}
+    </select>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow" data-i18n="hero_eyebrow">Smart Lottery Analysis</span>
+    <h1 data-i18n="hero_title">Play the Lottery{'\n'}With Your Eyes Open</h1>
+    <p data-i18n="hero_subtitle">Strategy Tracker analyses decades of draw data to give you real statistical insights — expected value, number frequency, hot and cold patterns — so you understand exactly what you're playing.</p>
+    <div class="hero-ctas">
+      <a href="#download" class="btn-primary" data-i18n="hero_cta">Download on the App Store</a>
+      <a href="#features" class="btn-secondary" data-i18n="hero_cta_secondary">See the Features</a>
+    </div>
+    <div class="hero-image">App screenshot placeholder</div>
+  </div>
+</header>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 data-i18n="features_title">What Strategy Tracker Does</h2>
+      <p data-i18n="features_subtitle">We don't promise to predict the future. We give you the numbers behind the numbers.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 data-i18n="feat1_title">Expected Value Analysis</h3>
+        <p data-i18n="feat1_desc">See the real expected value of every draw, adjusted for jackpot size, odds, and tax. Know what a ticket is actually worth before you buy.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔢</div>
+        <h3 data-i18n="feat2_title">Number Frequency</h3>
+        <p data-i18n="feat2_desc">Track how often each number has been drawn historically. Spot patterns, identify cold numbers, and build picks based on real data.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎂</div>
+        <h3 data-i18n="feat3_title">Birthday Bias Detector</h3>
+        <p data-i18n="feat3_desc">Most players pick numbers under 31. We show you how that affects your odds of sharing a jackpot — and how to counteract it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3 data-i18n="feat4_title">Multi-Country Support</h3>
+        <p data-i18n="feat4_desc">Covers UK Lotto, German Lotto 6/49, Canadian 6/49, Irish Lotto, Austrian Lotto, and Swiss Lotto. More lotteries coming soon.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3 data-i18n="feat5_title">Draw History</h3>
+        <p data-i18n="feat5_desc">Full historical draw archive going back years. Filter, sort, and export data for deeper analysis.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3 data-i18n="feat6_title">Premium Insights</h3>
+        <p data-i18n="feat6_desc">Unlock advanced analytics, bulk export, and API access. Premium plans start at €1.99/month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 data-i18n="how_title">How It Works</h2>
+    </div>
+    <div class="steps">
+      <div>
+        <div class="step-number">1</div>
+        <h3 data-i18n="how1_title">Pick Your Lottery</h3>
+        <p data-i18n="how1_desc">Choose from 6 supported lotteries across Europe and Canada.</p>
+      </div>
+      <div>
+        <div class="step-number">2</div>
+        <h3 data-i18n="how2_title">Explore the Data</h3>
+        <p data-i18n="how2_desc">Browse draw history, frequency charts, and EV calculations updated after every draw.</p>
+      </div>
+      <div>
+        <div class="step-number">3</div>
+        <h3 data-i18n="how3_title">Play Smarter</h3>
+        <p data-i18n="how3_desc">Use the insights to inform your number picks and understand the true cost of each ticket.</p>
+      </div>
+    </div>
+    <div class="how-image">Feature screenshot placeholder</div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section id="countries">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 data-i18n="countries_title">Supported Lotteries</h2>
+    </div>
+    <div class="countries-grid">
+      <div class="country-chip"><span class="country-flag">🇬🇧</span> UK Lotto</div>
+      <div class="country-chip"><span class="country-flag">🇩🇪</span> German Lotto 6/49</div>
+      <div class="country-chip"><span class="country-flag">🇨🇦</span> Canadian 6/49</div>
+      <div class="country-chip"><span class="country-flag">🇮🇪</span> Irish Lotto</div>
+      <div class="country-chip"><span class="country-flag">🇦🇹</span> Austrian Lotto</div>
+      <div class="country-chip"><span class="country-flag">🇨🇭</span> Swiss Lotto</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download" class="download-section">
+  <div class="section-inner">
+    <h2 data-i18n="download_title">Download Strategy Tracker</h2>
+    <p data-i18n="download_subtitle">Available now on iOS. Android coming soon.</p>
+    <a href="#" class="app-store-badge">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      <span data-i18n="download_cta">Download on the App Store</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Strategy Tracker</strong>
+  <p data-i18n="footer_tagline">Lottery statistics for informed players.</p>
+  <p style="margin-top:8px" data-i18n="footer_copy">© 2026 Strategy Tracker. All rights reserved.</p>
+</footer>
+
+<script>
+  import { translations } from '../i18n/translations';
+
+  const switcher = document.getElementById('lang-switcher') as HTMLSelectElement;
+
+  function applyLang(lang: string) {
+    const t = translations[lang];
+    if (!t) return;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n')!;
+      if (t[key]) el.textContent = t[key];
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('st-lang', lang);
+  }
+
+  const saved = localStorage.getItem('st-lang') || navigator.language.split('-')[0] || 'en';
+  switcher.value = Object.keys(translations).includes(saved) ? saved : 'en';
+  applyLang(switcher.value);
+
+  switcher.addEventListener('change', () => applyLang(switcher.value));
+</script>
+
+</body>
+</html>
