@@ -1,0 +1,215 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props {
+  lang: 'en' | 'de' | 'fr';
+}
+
+const { lang } = Astro.props;
+const t = translations[lang];
+
+const base = 'https://strategy-tracker.adrianlawley.com';
+const canonical = lang === 'en' ? `${base}/` : `${base}/${lang}/`;
+
+const descriptions: Record<string, string> = {
+  en: 'Strategy Tracker gives lottery players real statistical insights: expected value per draw, number frequency analysis, birthday bias detection and more. Available for UK, German, Canadian, Irish, Austrian and Swiss lotteries.',
+  de: 'Strategy Tracker liefert Lottospielern echte statistische Einblicke: Erwartungswert pro Ziehung, Zahlenhäufigkeitsanalyse, Geburtstags-Bias und mehr. Verfügbar für UK, Deutschland, Kanada, Irland, Österreich und die Schweiz.',
+  fr: 'Strategy Tracker donne aux joueurs de loterie de vrais insights statistiques : valeur attendue par tirage, analyse de la fréquence des numéros, détection du biais anniversaire et plus. Disponible pour UK, Allemagne, Canada, Irlande, Autriche et Suisse.',
+};
+
+const langPaths: Record<string, string> = { en: '/', de: '/de/', fr: '/fr/' };
+---
+
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+
+  <title>Strategy Tracker — {lang === 'de' ? 'Lotto-Statistiken & Erwartungswertanalyse' : lang === 'fr' ? 'Statistiques de Loterie & Analyse VE' : 'Lottery Statistics & Expected Value Analysis'}</title>
+  <meta name="description" content={descriptions[lang]} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href={`${base}/`} />
+  <link rel="alternate" hreflang="de" href={`${base}/de/`} />
+  <link rel="alternate" hreflang="fr" href={`${base}/fr/`} />
+  <link rel="alternate" hreflang="x-default" href={`${base}/`} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Strategy Tracker" />
+  <meta property="og:description" content={descriptions[lang]} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={`${base}/images/strategy-tracker-lottery-analysis-app.png`} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Strategy Tracker" />
+  <meta name="twitter:description" content={descriptions[lang]} />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Strategy Tracker",
+    "operatingSystem": "iOS",
+    "applicationCategory": "UtilitiesApplication",
+    "description": descriptions[lang],
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": lang,
+  })} />
+
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href={langPaths[lang]} class="nav-logo">Strategy Tracker</a>
+    <ul class="nav-links">
+      <li><a href="#features">{t.nav_features}</a></li>
+      <li><a href="#how">{t.nav_features}</a></li>
+      <li><a href="#download">{t.nav_download}</a></li>
+    </ul>
+    <select class="lang-select" id="lang-switcher" aria-label="Language">
+      <option value="en" selected={lang === 'en'}>English</option>
+      <option value="de" selected={lang === 'de'}>Deutsch</option>
+      <option value="fr" selected={lang === 'fr'}>Français</option>
+    </select>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">{t.hero_eyebrow}</span>
+    <h1 style="white-space:pre-line">{t.hero_title}</h1>
+    <p>{t.hero_subtitle}</p>
+    <div class="hero-ctas">
+      <a href="#download" class="btn-primary">{t.hero_cta}</a>
+      <a href="#features" class="btn-secondary">{t.hero_cta_secondary}</a>
+    </div>
+    <img class="hero-image" src="/images/strategy-tracker-lottery-analysis-app.png" alt="Strategy Tracker app dashboard showing lottery statistics and expected value analysis" />
+  </div>
+</header>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>{t.features_title}</h2>
+      <p>{t.features_subtitle}</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>{t.feat1_title}</h3>
+        <p>{t.feat1_desc}</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔢</div>
+        <h3>{t.feat2_title}</h3>
+        <p>{t.feat2_desc}</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎂</div>
+        <h3>{t.feat3_title}</h3>
+        <p>{t.feat3_desc}</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>{t.feat4_title}</h3>
+        <p>{t.feat4_desc}</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>{t.feat5_title}</h3>
+        <p>{t.feat5_desc}</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3>{t.feat6_title}</h3>
+        <p>{t.feat6_desc}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>{t.how_title}</h2>
+    </div>
+    <div class="steps">
+      <div>
+        <div class="step-number">1</div>
+        <h3>{t.how1_title}</h3>
+        <p>{t.how1_desc}</p>
+      </div>
+      <div>
+        <div class="step-number">2</div>
+        <h3>{t.how2_title}</h3>
+        <p>{t.how2_desc}</p>
+      </div>
+      <div>
+        <div class="step-number">3</div>
+        <h3>{t.how3_title}</h3>
+        <p>{t.how3_desc}</p>
+      </div>
+    </div>
+    <div class="how-image">Feature screenshot placeholder</div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section id="countries">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>{t.countries_title}</h2>
+    </div>
+    <div class="countries-grid">
+      <div class="country-chip"><span class="country-flag">🇬🇧</span> UK Lotto</div>
+      <div class="country-chip"><span class="country-flag">🇩🇪</span> German Lotto 6/49</div>
+      <div class="country-chip"><span class="country-flag">🇨🇦</span> Canadian 6/49</div>
+      <div class="country-chip"><span class="country-flag">🇮🇪</span> Irish Lotto</div>
+      <div class="country-chip"><span class="country-flag">🇦🇹</span> Austrian Lotto</div>
+      <div class="country-chip"><span class="country-flag">🇨🇭</span> Swiss Lotto</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download" class="download-section">
+  <div class="section-inner">
+    <h2>{t.download_title}</h2>
+    <p>{t.download_subtitle}</p>
+    <a href="#" class="app-store-badge">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      <span>{t.download_cta}</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Strategy Tracker</strong>
+  <p>{t.footer_tagline}</p>
+  <p style="margin-top:8px">{t.footer_copy}</p>
+</footer>
+
+<script define:vars={{ langPaths }}>
+  const switcher = document.getElementById('lang-switcher');
+  switcher.addEventListener('change', () => {
+    window.location.href = langPaths[switcher.value];
+  });
+</script>
+
+</body>
+</html>
