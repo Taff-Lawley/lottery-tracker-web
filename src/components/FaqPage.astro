@@ -1,0 +1,467 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props {
+  lang: 'en' | 'de' | 'fr';
+}
+
+const { lang } = Astro.props;
+const t = translations[lang];
+
+const base = 'https://strategy-tracker.adrianlawley.com';
+const canonical = lang === 'en' ? `${base}/faq` : `${base}/${lang}/faq`;
+const langPaths: Record<string, string> = { en: '/', de: '/de/', fr: '/fr/' };
+const faqPaths: Record<string, string> = { en: '/faq', de: '/de/faq', fr: '/fr/faq' };
+
+type FAQItem = { q: string; a: string };
+type FAQSection = { heading: string; items: FAQItem[] };
+type FAQContent = { title: string; subtitle: string; sections: FAQSection[] };
+
+const content: Record<string, FAQContent> = {
+  en: {
+    title: 'FAQ & How-To',
+    subtitle: 'Everything you need to know about Strategy Tracker and how to use it.',
+    sections: [
+      {
+        heading: 'General',
+        items: [
+          {
+            q: 'What is Expected Value (EV)?',
+            a: 'Expected Value is the average return per €1 spent on a lottery ticket, accounting for all prize tiers, the jackpot size, and the probability of winning each tier. An EV of 0.40 means you get back €0.40 on average for every €1 you spend. No lottery has a positive EV — the house always wins — but EV varies significantly with jackpot size. Strategy Tracker shows you when the EV is at its seasonal high, so you at least play at the best available moment.',
+          },
+          {
+            q: 'Does Strategy Tracker help me win more often?',
+            a: 'No — and we won\'t pretend otherwise. Every draw is independent and the odds are fixed. No system, tool, or strategy can change the probability that your six numbers match the draw. What Strategy Tracker does is help you understand the true cost of playing, track your results honestly, and — for German Lotto specifically — use the High Number Bias generator to pick combinations that pay more if you win.',
+          },
+          {
+            q: 'How often is the draw data updated?',
+            a: 'Results are fetched automatically via GitHub Actions within a few hours of each draw closing. The expected value is recalculated as soon as the next jackpot is announced. You\'ll always see fresh data without needing to refresh.',
+          },
+          {
+            q: 'Which lotteries are supported?',
+            a: 'UK National Lottery, German Lotto 6/49, Irish Lotto, Austrian Lotto 6aus45, Swiss Lotto, and Canada Lotto 6/49. More lotteries are on the roadmap.',
+          },
+          {
+            q: 'What is "My Plays"?',
+            a: 'My Plays lets you save tickets you\'ve actually purchased — not generated ones. Enter your numbers and the draw date, and the app scores them automatically after each draw, showing your match count and prize class. You can track multi-draw entries too.',
+          },
+          {
+            q: 'What is included in premium?',
+            a: 'Premium unlocks all generators, full frequency analysis, birthday bias analysis, pairs & triplets analysis, and access to all supported lotteries. It\'s €4.99/month.',
+          },
+        ],
+      },
+      {
+        heading: 'How to use the app',
+        items: [
+          {
+            q: 'How do I generate tickets?',
+            a: 'Select your lottery from the dropdown at the top of the screen, then tap one of the generator tabs (Random, Balanced Sum, Cold Pick, etc.). Hit the Generate button and your tickets appear instantly. Each method generates a fresh set — tap again to get a new batch.',
+          },
+          {
+            q: 'How do I save a ticket I actually bought?',
+            a: 'Tap the My Plays tab, then the + button. Enter your six numbers, the bonus ball, and the draw date. The app will score it automatically once results are in. You can add multi-draw entries if your ticket covers more than one draw.',
+          },
+          {
+            q: 'How do I see how my generated tickets performed?',
+            a: 'Tap the Results tab. You\'ll see a breakdown by generator method showing how many numbers each method matched in past draws, your best-ever match count, and any win streaks.',
+          },
+          {
+            q: 'How do I switch between lotteries?',
+            a: 'Use the lottery dropdown at the top of any main screen. Your generated tickets and results are stored per lottery, so switching won\'t lose anything.',
+          },
+          {
+            q: 'How do I change the app language?',
+            a: 'Go to Account (the person icon) and tap Language. The app supports English, German, and French.',
+          },
+        ],
+      },
+      {
+        heading: 'Generators',
+        items: [
+          {
+            q: 'Random',
+            a: 'Picks numbers randomly within each historical zone (1–9, 10–19, 20–29, 30–39, 40–49) using six zone templates that reflect common draw distributions. It\'s a quick pick that respects how real draws tend to spread across the number range — not just a pure coin-flip across 1–49.',
+          },
+          {
+            q: 'Balanced Sum',
+            a: 'The sum of six winning numbers clusters in a predictable range for each lottery — what we call the "sweet spot". This generator only produces tickets whose numbers add up within that range, filtering out combinations that are statistically rarer winners. It doesn\'t change your odds, but it does mean your tickets look more like historical winners.',
+          },
+          {
+            q: 'Cold Pick',
+            a: 'Identifies the 10 numbers that have gone the longest without appearing in any draw (the "coldest" numbers), then picks 6 from that pool. It\'s based on the intuition that overdue numbers might be due — though in reality each draw is statistically independent.',
+          },
+          {
+            q: 'Outdated Pick',
+            a: 'Picks numbers that used to appear frequently in historical draws but have been rare in the last year. The ranking is based on how much each number\'s recent draw rate has fallen below its all-time rate. These are numbers that were once "hot" but have gone cool.',
+          },
+          {
+            q: 'High Number Bias',
+            a: 'The only generator with a genuine EV argument. German Lotto jackpots are split between all winners, so picking less popular combinations increases your expected share of the prize. Most players choose birthdays (1–31) and avoid consecutive numbers — this generator does the opposite: it weights 32–49 at 3× probability, down-weights "lucky" numbers like 7, 11, 13 and 17, and requires at least one consecutive pair per ticket. It wins no more often than any other method, but when it does win, you\'re less likely to share the jackpot. Currently optimised for German Lotto 6/49.',
+          },
+          {
+            q: 'Weighted',
+            a: 'Picks 6 numbers at random, but weighted by historical draw frequency. Numbers that have appeared more often in past draws are more likely to be selected — though any number can still appear. Think of it as a frequency-informed quick pick.',
+          },
+          {
+            q: 'Delta',
+            a: 'Builds tickets from incremental gaps (deltas) between consecutive numbers rather than picking numbers directly. Gaps are randomly chosen within fixed ranges to ensure the total spread is at least 38, the last number is ≤ 49, and at most 2 numbers overlap with the historically extreme draws. A more unusual approach that produces a different spread pattern to most generators.',
+          },
+          {
+            q: 'Wheel & Cold Wheel',
+            a: 'Wheel systems guarantee coverage: if any winning combination of numbers appears within your chosen base pool, at least one of your tickets will contain it. The standard Wheel picks a random pool of base numbers. The Cold Wheel uses the 15 most overdue numbers as the base instead. Three wheel sizes are available: 10-number (20 tickets), 15-number (8 tickets), and 15-number special (12 of 24 tickets). Wheels produce multiple tickets by design — that\'s how the coverage guarantee works.',
+          },
+          {
+            q: 'Least Frequent & Most Frequent',
+            a: 'These two generators use zone templates combined with actual draw frequency data to produce tickets biased toward either the least-drawn or the most-drawn numbers in each zone. Least Frequent targets numbers that have appeared the fewest times historically; Most Frequent targets the opposite end.',
+          },
+        ],
+      },
+    ],
+  },
+
+  de: {
+    title: 'FAQ & Anleitung',
+    subtitle: 'Alles, was du über Strategy Tracker wissen möchtest.',
+    sections: [
+      {
+        heading: 'Allgemein',
+        items: [
+          {
+            q: 'Was ist der Erwartungswert (EV)?',
+            a: 'Der Erwartungswert gibt an, wie viel du im Durchschnitt pro eingesetztem Euro zurückbekommst – unter Berücksichtigung aller Gewinnklassen, der Jackpot-Größe und der jeweiligen Gewinnwahrscheinlichkeiten. Ein EV von 0,40 bedeutet: Du erhältst im Schnitt 0,40 € für jeden eingesetzten Euro zurück. Keine Lotterie hat einen positiven EV – die Bank gewinnt immer. Aber der EV schwankt je nach Jackpot-Größe erheblich. Strategy Tracker zeigt dir, wann der EV seinen saisonalen Höchststand erreicht.',
+          },
+          {
+            q: 'Hilft Strategy Tracker mir, öfter zu gewinnen?',
+            a: 'Nein – und das sagen wir dir ehrlich. Jede Ziehung ist unabhängig und die Gewinnchancen sind fest. Kein System, kein Tool und keine Strategie kann die Wahrscheinlichkeit verändern, dass deine Zahlen gezogen werden. Was Strategy Tracker tut: Es hilft dir, die wahren Kosten des Spielens zu verstehen, deine Ergebnisse ehrlich zu verfolgen und – speziell für das Deutsche Lotto – mit dem High-Number-Bias-Generator Kombinationen zu wählen, die im Gewinnfall mehr auszahlen.',
+          },
+          {
+            q: 'Wie aktuell sind die Ziehungsdaten?',
+            a: 'Die Ergebnisse werden automatisch via GitHub Actions innerhalb weniger Stunden nach jeder Ziehung abgerufen. Sobald der nächste Jackpot bekannt ist, wird der Erwartungswert neu berechnet. Du siehst immer aktuelle Daten – ohne manuelles Aktualisieren.',
+          },
+          {
+            q: 'Welche Lotterien werden unterstützt?',
+            a: 'UK National Lottery, Deutsches Lotto 6/49, Irisches Lotto, Österreichisches Lotto 6aus45, Swiss Lotto und Kanadisches Lotto 6/49. Weitere Lotterien sind in Planung.',
+          },
+          {
+            q: 'Was ist „Meine Tipps"?',
+            a: '„Meine Tipps" ermöglicht es dir, echte Lottoscheine einzutragen, die du tatsächlich gekauft hast – keine generierten Tipps. Gib deine Zahlen und das Ziehungsdatum ein, und die App bewertet sie automatisch nach der Ziehung und zeigt dir Trefferzahl und Gewinnklasse. Mehrfachtipps über mehrere Ziehungen werden ebenfalls unterstützt.',
+          },
+          {
+            q: 'Was ist im Premium-Abo enthalten?',
+            a: 'Premium schaltet alle Generatoren, die vollständige Häufigkeitsanalyse, die Geburtstags-Bias-Analyse, die Paare-&-Tripel-Analyse sowie Zugang zu allen unterstützten Lotterien frei. Preis: 4,99 €/Monat.',
+          },
+        ],
+      },
+      {
+        heading: 'Anleitung',
+        items: [
+          {
+            q: 'Wie generiere ich Tipps?',
+            a: 'Wähle deine Lotterie aus dem Dropdown oben auf dem Bildschirm, tippe dann auf einen der Generator-Tabs (Zufall, Ausgeglichene Summe, Cold Pick usw.) und drücke auf Generieren. Deine Tipps erscheinen sofort. Jede Methode erzeugt eine neue Serie – tippe erneut für einen weiteren Satz.',
+          },
+          {
+            q: 'Wie trage ich einen selbst gekauften Schein ein?',
+            a: 'Gehe zum Tab „Meine Tipps" und tippe auf das +-Symbol. Gib deine sechs Zahlen, die Zusatzzahl und das Ziehungsdatum ein. Die App bewertet den Schein automatisch, sobald die Ergebnisse vorliegen. Mehrfachtipps für mehrere Ziehungen werden ebenfalls unterstützt.',
+          },
+          {
+            q: 'Wie sehe ich, wie meine generierten Tipps abgeschnitten haben?',
+            a: 'Öffne den Tab „Ergebnisse". Dort siehst du eine Aufschlüsselung nach Generator-Methode: wie viele Zahlen jede Methode in vergangenen Ziehungen getroffen hat, dein bestes Ergebnis und eventuelle Trefferserien.',
+          },
+          {
+            q: 'Wie wechsle ich zwischen Lotterien?',
+            a: 'Nutze das Lotterie-Dropdown oben auf jedem Hauptbildschirm. Deine generierten Tipps und Ergebnisse werden pro Lotterie gespeichert – beim Wechsel geht nichts verloren.',
+          },
+          {
+            q: 'Wie ändere ich die App-Sprache?',
+            a: 'Gehe zu „Konto" (das Personen-Symbol) und tippe auf „Sprache". Die App ist auf Englisch, Deutsch und Französisch verfügbar.',
+          },
+        ],
+      },
+      {
+        heading: 'Generatoren',
+        items: [
+          {
+            q: 'Zufall (Random)',
+            a: 'Wählt Zahlen zufällig innerhalb historischer Zonen (1–9, 10–19, 20–29, 30–39, 40–49) anhand von sechs Zonenvorlagen, die typische Ziehungsverteilungen widerspiegeln. Ein schneller Tipp, der die tatsächliche Verteilung historischer Ziehungen berücksichtigt – kein reiner Münzwurf über 1–49.',
+          },
+          {
+            q: 'Ausgeglichene Summe (Balanced Sum)',
+            a: 'Die Summe von sechs Gewinnzahlen liegt bei jeder Lotterie in einem vorhersehbaren Bereich – dem sogenannten „Sweet Spot". Dieser Generator erzeugt nur Tipps, deren Summe in diesem Bereich liegt. Er verändert die Gewinnchancen nicht, aber die Tipps ähneln statistisch häufiger den historischen Gewinnkombinationen.',
+          },
+          {
+            q: 'Cold Pick (Kälteste Zahlen)',
+            a: 'Ermittelt die 10 Zahlen, die am längsten nicht gezogen wurden, und wählt 6 davon aus. Basiert auf der Idee, dass „überfällige" Zahlen bald wieder erscheinen könnten – auch wenn statistisch jede Ziehung unabhängig ist.',
+          },
+          {
+            q: 'Veralteter Tipp (Outdated Pick)',
+            a: 'Wählt Zahlen aus, die historisch häufig vorkamen, im letzten Jahr aber selten gezogen wurden. Die Rangfolge basiert darauf, wie stark die aktuelle Häufigkeit unter die historische Gesamthäufigkeit gefallen ist – ehemals „heiße" Zahlen, die kalt geworden sind.',
+          },
+          {
+            q: 'High-Number-Bias (Hohe Zahlen bevorzugen)',
+            a: 'Der einzige Generator mit einem echten Erwartungswert-Argument. Da beim Deutschen Lotto der Jackpot unter allen Gewinnern geteilt wird, erhöht die Wahl unbeliebter Kombinationen den zu erwartenden Anteil im Gewinnfall. Die meisten Spieler wählen Geburtstagszahlen (1–31) und meiden aufeinanderfolgende Zahlen – dieser Generator macht das Gegenteil: Er gewichtet 32–49 dreifach, reduziert die Wahrscheinlichkeit von „Glückszahlen" wie 7, 11, 13 und 17 und erfordert mindestens ein aufeinanderfolgendes Zahlenpaar. Gewinnt nicht häufiger, zahlt aber im Erfolgsfall mehr. Aktuell für Deutsches Lotto 6/49 optimiert.',
+          },
+          {
+            q: 'Gewichtet (Weighted)',
+            a: 'Wählt 6 Zahlen zufällig aus, jedoch gewichtet nach historischer Ziehungshäufigkeit. Zahlen, die in der Vergangenheit öfter gezogen wurden, haben eine höhere Auswahlwahrscheinlichkeit – aber jede Zahl kann nach wie vor erscheinen. Ein frequenzgesteuerter Schnelltipp.',
+          },
+          {
+            q: 'Delta',
+            a: 'Erstellt Tipps aus inkrementellen Abständen (Deltas) zwischen aufeinanderfolgenden Zahlen. Die Abstände werden zufällig gewählt, sodass die Gesamtspanne mindestens 38 beträgt, die letzte Zahl ≤ 49 ist und höchstens 2 Zahlen mit historisch extremen Ziehungen überlappen. Ein ungewöhnlicher Ansatz mit einem anderen Streuungsmuster.',
+          },
+          {
+            q: 'Wheel & Cold Wheel (Systeme)',
+            a: 'System-Tipps garantieren Abdeckung: Wenn eine Gewinnkombination innerhalb des gewählten Pools vorkommt, enthält mindestens ein Tipp diese Kombination. Das Standard-Wheel wählt einen zufälligen Pool; das Cold Wheel nutzt die 15 am längsten nicht gezogenen Zahlen als Basis. Drei Systemgrößen stehen zur Verfügung: 10 Zahlen (20 Tipps), 15 Zahlen (8 Tipps) und 15 Zahlen Spezial (12 von 24 Tipps).',
+          },
+          {
+            q: 'Seltenste & häufigste Zahlen (Least/Most Frequent)',
+            a: 'Diese beiden Generatoren nutzen Zonenvorlagen kombiniert mit tatsächlichen Ziehungshäufigkeiten, um Tipps zu erstellen, die entweder die am seltensten oder die am häufigsten gezogenen Zahlen pro Zone bevorzugen.',
+          },
+        ],
+      },
+    ],
+  },
+
+  fr: {
+    title: 'FAQ & Guide d\'utilisation',
+    subtitle: 'Tout ce que vous devez savoir sur Strategy Tracker et comment l\'utiliser.',
+    sections: [
+      {
+        heading: 'Général',
+        items: [
+          {
+            q: 'Qu\'est-ce que la valeur attendue (VE) ?',
+            a: 'La valeur attendue est le retour moyen par euro dépensé sur un ticket de loterie, tenant compte de tous les niveaux de prix, de la taille du jackpot et de la probabilité de gagner à chaque niveau. Une VE de 0,40 signifie que vous récupérez en moyenne 0,40 € pour chaque euro joué. Aucune loterie n\'a une VE positive — la maison gagne toujours — mais la VE varie considérablement selon la taille du jackpot. Strategy Tracker vous montre quand la VE est à son point le plus haut de la saison.',
+          },
+          {
+            q: 'Strategy Tracker m\'aide-t-il à gagner plus souvent ?',
+            a: 'Non — et nous ne prétendrons pas le contraire. Chaque tirage est indépendant et les chances sont fixes. Aucun système, outil ou stratégie ne peut modifier la probabilité que vos six numéros correspondent au tirage. Ce que fait Strategy Tracker : il vous aide à comprendre le vrai coût du jeu, à suivre vos résultats honnêtement et — spécifiquement pour le Lotto allemand — à utiliser le générateur Biais Hauts Numéros pour choisir des combinaisons qui paient davantage si vous gagnez.',
+          },
+          {
+            q: 'À quelle fréquence les données sont-elles mises à jour ?',
+            a: 'Les résultats sont récupérés automatiquement via GitHub Actions dans les quelques heures suivant la fermeture de chaque tirage. La valeur attendue est recalculée dès l\'annonce du prochain jackpot. Vous voyez toujours des données fraîches sans avoir à rafraîchir manuellement.',
+          },
+          {
+            q: 'Quelles loteries sont supportées ?',
+            a: 'UK National Lottery, Lotto allemand 6/49, Lotto irlandais, Lotto autrichien 6aus45, Swiss Lotto et Lotto canadien 6/49. D\'autres loteries sont prévues.',
+          },
+          {
+            q: 'Qu\'est-ce que "Mes Tickets" ?',
+            a: '"Mes Tickets" vous permet de sauvegarder les tickets que vous avez réellement achetés — pas les tickets générés. Entrez vos numéros et la date du tirage, et l\'application les évalue automatiquement après chaque tirage en affichant votre nombre de correspondances et votre classe de prix. Les entrées multi-tirages sont également supportées.',
+          },
+          {
+            q: 'Qu\'est-ce qui est inclus dans le premium ?',
+            a: 'Premium débloque tous les générateurs, l\'analyse complète des fréquences, l\'analyse du biais anniversaire, l\'analyse des paires et triplets, ainsi que l\'accès à toutes les loteries supportées. Tarif : 4,99 €/mois.',
+          },
+        ],
+      },
+      {
+        heading: 'Guide d\'utilisation',
+        items: [
+          {
+            q: 'Comment générer des tickets ?',
+            a: 'Sélectionnez votre loterie dans le menu déroulant en haut de l\'écran, puis appuyez sur l\'un des onglets de générateur (Aléatoire, Somme Équilibrée, Cold Pick, etc.). Appuyez sur Générer et vos tickets apparaissent instantanément. Chaque méthode génère un nouveau jeu — appuyez à nouveau pour un nouveau lot.',
+          },
+          {
+            q: 'Comment sauvegarder un ticket que j\'ai acheté ?',
+            a: 'Allez dans l\'onglet Mes Tickets, puis appuyez sur le bouton +. Entrez vos six numéros, le numéro bonus et la date du tirage. L\'application les évalue automatiquement une fois les résultats disponibles. Vous pouvez aussi ajouter des entrées multi-tirages.',
+          },
+          {
+            q: 'Comment voir les performances de mes tickets générés ?',
+            a: 'Appuyez sur l\'onglet Résultats. Vous y verrez une ventilation par méthode de générateur : combien de numéros chaque méthode a fait correspondre dans les tirages passés, votre meilleur résultat absolu et les éventuelles séries.',
+          },
+          {
+            q: 'Comment changer de loterie ?',
+            a: 'Utilisez le menu déroulant de loterie en haut de n\'importe quel écran principal. Vos tickets générés et résultats sont stockés par loterie — le changement ne fait rien perdre.',
+          },
+          {
+            q: 'Comment changer la langue de l\'application ?',
+            a: 'Allez dans Compte (l\'icône personne) et appuyez sur Langue. L\'application est disponible en anglais, allemand et français.',
+          },
+        ],
+      },
+      {
+        heading: 'Générateurs',
+        items: [
+          {
+            q: 'Aléatoire (Random)',
+            a: 'Sélectionne des numéros aléatoirement dans chaque zone historique (1–9, 10–19, 20–29, 30–39, 40–49) en utilisant six modèles de zones qui reflètent les distributions communes des tirages. Un tirage rapide qui respecte la façon dont les vrais tirages tendent à se répartir sur la plage de numéros.',
+          },
+          {
+            q: 'Somme Équilibrée (Balanced Sum)',
+            a: 'La somme de six numéros gagnants se concentre dans une plage prévisible pour chaque loterie — ce que nous appelons la "zone idéale". Ce générateur ne produit que des tickets dont les numéros s\'additionnent dans cette plage. Il ne change pas vos chances, mais vos tickets ressemblent davantage aux combinaisons gagnantes historiques.',
+          },
+          {
+            q: 'Cold Pick (Numéros Froids)',
+            a: 'Identifie les 10 numéros qui n\'ont pas été tirés depuis le plus longtemps, puis en choisit 6. Basé sur l\'intuition que les numéros en retard pourraient bientôt sortir — bien que statistiquement chaque tirage soit indépendant.',
+          },
+          {
+            q: 'Sélection Dépassée (Outdated Pick)',
+            a: 'Sélectionne des numéros qui apparaissaient fréquemment dans les tirages historiques mais qui ont été rares au cours de la dernière année. Le classement est basé sur l\'écart entre le taux de sortie récent et le taux historique global — d\'anciens numéros "chauds" devenus froids.',
+          },
+          {
+            q: 'Biais Hauts Numéros (High Number Bias)',
+            a: 'Le seul générateur avec un véritable argument de valeur attendue. Comme les jackpots du Lotto allemand sont partagés entre tous les gagnants, choisir des combinaisons moins populaires augmente votre part espérée du prix. La plupart des joueurs choisissent des numéros d\'anniversaire (1–31) et évitent les numéros consécutifs — ce générateur fait l\'inverse : il pondère 32–49 à 3×, réduit la probabilité des numéros "chanceux" comme 7, 11, 13 et 17, et exige au moins une paire consécutive par ticket. Il ne gagne pas plus souvent, mais rapporte davantage quand il gagne. Actuellement optimisé pour le Lotto allemand 6/49.',
+          },
+          {
+            q: 'Pondéré (Weighted)',
+            a: 'Sélectionne 6 numéros aléatoirement, mais pondérés par la fréquence historique des tirages. Les numéros qui sont sortis plus souvent ont plus de chances d\'être sélectionnés — mais tout numéro peut encore apparaître. Un tirage rapide informé par les fréquences.',
+          },
+          {
+            q: 'Delta',
+            a: 'Construit des tickets à partir d\'écarts incrémentaux (deltas) entre numéros consécutifs plutôt que de sélectionner directement des numéros. Les écarts sont choisis aléatoirement dans des plages fixes pour garantir que l\'étendue totale est d\'au moins 38, que le dernier numéro est ≤ 49, et qu\'au plus 2 numéros chevauchent les tirages historiquement extrêmes.',
+          },
+          {
+            q: 'Wheel & Cold Wheel (Systèmes)',
+            a: 'Les systèmes de roue garantissent la couverture : si une combinaison gagnante apparaît dans votre pool de base, au moins un de vos tickets la contiendra. Le Wheel standard choisit un pool aléatoire ; le Cold Wheel utilise les 15 numéros les plus en retard comme base. Trois tailles de roue sont disponibles : 10 numéros (20 tickets), 15 numéros (8 tickets) et 15 numéros spécial (12 sur 24 tickets).',
+          },
+          {
+            q: 'Moins Fréquents & Plus Fréquents (Least/Most Frequent)',
+            a: 'Ces deux générateurs utilisent des modèles de zones combinés avec des données réelles de fréquence pour produire des tickets orientés vers les numéros les moins tirés ou les plus tirés dans chaque zone.',
+          },
+        ],
+      },
+    ],
+  },
+};
+
+const page = content[lang];
+---
+
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{page.title} — Strategy Tracker</title>
+  <meta name="description" content={page.subtitle} />
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang="en" href={`${base}/faq`} />
+  <link rel="alternate" hreflang="de" href={`${base}/de/faq`} />
+  <link rel="alternate" hreflang="fr" href={`${base}/fr/faq`} />
+  <link rel="alternate" hreflang="x-default" href={`${base}/faq`} />
+  <link rel="stylesheet" href="/styles/global.css" />
+  <style>
+    .faq-hero {
+      background: linear-gradient(135deg, #1a237e 0%, #4527a0 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 24px 60px;
+    }
+    .faq-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin: 0 0 16px; }
+    .faq-hero p  { font-size: 1.1rem; opacity: 0.85; max-width: 560px; margin: 0 auto; }
+
+    .faq-body { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+
+    .faq-section-heading {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1a237e;
+      margin: 48px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e8eaf6;
+    }
+    .faq-section-heading:first-child { margin-top: 0; }
+
+    details {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    summary {
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 18px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      color: #1e293b;
+      background: #fff;
+      transition: background 0.15s;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: #7c3aed;
+      flex-shrink: 0;
+      margin-left: 12px;
+      transition: transform 0.2s;
+    }
+    details[open] summary { background: #f5f3ff; }
+    details[open] summary::after { content: '−'; }
+    details p {
+      padding: 0 20px 20px;
+      color: #475569;
+      line-height: 1.75;
+      font-size: 0.97rem;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href={langPaths[lang]} class="nav-logo">Strategy Tracker</a>
+    <ul class="nav-links">
+      <li><a href={langPaths[lang]}>{t.nav_home}</a></li>
+      <li><a href={`${langPaths[lang]}#features`}>{t.nav_features}</a></li>
+      <li><a href={`${langPaths[lang]}#download`}>{t.nav_download}</a></li>
+    </ul>
+    <select class="lang-select" id="lang-switcher" aria-label="Language">
+      <option value="en" selected={lang === 'en'}>English</option>
+      <option value="de" selected={lang === 'de'}>Deutsch</option>
+      <option value="fr" selected={lang === 'fr'}>Français</option>
+    </select>
+  </div>
+</nav>
+
+<script>
+  const sel = document.getElementById('lang-switcher') as HTMLSelectElement;
+  const faqPaths: Record<string, string> = { en: '/faq', de: '/de/faq', fr: '/fr/faq' };
+  sel?.addEventListener('change', () => { window.location.href = faqPaths[sel.value] ?? '/faq'; });
+</script>
+
+<!-- HERO -->
+<section class="faq-hero">
+  <h1>{page.title}</h1>
+  <p>{page.subtitle}</p>
+</section>
+
+<!-- FAQ CONTENT -->
+<main class="faq-body">
+  {page.sections.map(section => (
+    <div>
+      <h2 class="faq-section-heading">{section.heading}</h2>
+      {section.items.map(item => (
+        <details>
+          <summary>{item.q}</summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </div>
+  ))}
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-tagline">{t.footer_tagline}</p>
+    <nav class="footer-nav">
+      <a href={langPaths[lang]}>{t.nav_home}</a>
+      <a href={faqPaths[lang]}>FAQ</a>
+      <a href={`${langPaths[lang]}privacy`}>{lang === 'de' ? 'Datenschutz' : lang === 'fr' ? 'Confidentialité' : 'Privacy'}</a>
+      <a href={`${langPaths[lang]}legal`}>{lang === 'de' ? 'Impressum' : lang === 'fr' ? 'Mentions légales' : 'Legal'}</a>
+    </nav>
+    <p class="footer-copy">{t.footer_copy}</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -18,6 +18,7 @@ const descriptions: Record<string, string> = {
 };
 
 const langPaths: Record<string, string> = { en: '/', de: '/de/', fr: '/fr/' };
+const faqPaths: Record<string, string> = { en: '/faq', de: '/de/faq', fr: '/fr/faq' };
 ---
 
 <!doctype html>
@@ -72,8 +73,8 @@ const langPaths: Record<string, string> = { en: '/', de: '/de/', fr: '/fr/' };
     <a href={langPaths[lang]} class="nav-logo">Strategy Tracker</a>
     <ul class="nav-links">
       <li><a href="#features">{t.nav_features}</a></li>
-      <li><a href="#how">{t.nav_features}</a></li>
       <li><a href="#download">{t.nav_download}</a></li>
+      <li><a href={faqPaths[lang]}>{t.nav_faq}</a></li>
     </ul>
     <select class="lang-select" id="lang-switcher" aria-label="Language">
       <option value="en" selected={lang === 'en'}>English</option>
