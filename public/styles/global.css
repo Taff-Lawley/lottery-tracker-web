@@ -290,38 +290,69 @@ section:nth-child(even) { background: var(--bg-alt); }
 .country-flag { font-size: 1.4rem; }
 
 /* DOWNLOAD CTA */
-.download-section {
-  background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+section.download-section {
+  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 60%, #7c3aed 100%);
   color: white;
   text-align: center;
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+}
+section.download-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.download-inner { position: relative; }
+
+.download-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 999px;
+  padding: 4px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px !important;
+  opacity: 1 !important;
 }
 
 .download-section h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 800;
-  margin-bottom: 12px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
 }
 
-.download-section p {
+.download-subtitle {
   opacity: 0.85;
-  margin-bottom: 32px;
-  font-size: 1.05rem;
+  margin-bottom: 40px !important;
+  font-size: 1.1rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .app-store-badge {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: black;
-  color: white;
-  padding: 12px 24px;
+  background: white;
+  color: var(--brand-dark);
+  padding: 16px 32px;
   border-radius: var(--radius);
-  font-weight: 600;
-  font-size: 1rem;
-  transition: opacity 0.2s;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
 }
-.app-store-badge:hover { opacity: 0.85; }
-.app-store-badge svg { width: 24px; height: 24px; fill: white; }
+.app-store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
+.app-store-badge svg { width: 26px; height: 26px; fill: var(--brand-dark); }
 
 /* FOOTER */
 footer {

@@ -1,5 +1,6 @@
 ---
 import { translations } from '../i18n/translations';
+import DownloadSection from './DownloadSection.astro';
 
 interface Props {
   lang: 'en' | 'de' | 'fr';
@@ -448,6 +449,9 @@ const page = content[lang];
     </div>
   ))}
 </main>
+
+<!-- DOWNLOAD -->
+<DownloadSection lang={lang} />
 
 <!-- FOOTER -->
 <footer>
