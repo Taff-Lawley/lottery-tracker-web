@@ -73,7 +73,9 @@ const faqPaths: Record<string, string> = { en: '/faq', de: '/de/faq', fr: '/fr/f
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href={langPaths[lang]} class="nav-logo">Strategy Tracker</a>
+    <a href={langPaths[lang]} class="nav-logo">
+      <img src="/images/strategy-tracker-logo-48.png" alt="Strategy Tracker logo" width="24" height="24" style="vertical-align:middle;margin-right:8px;border-radius:6px" />Strategy Tracker
+    </a>
     <ul class="nav-links">
       <li><a href="#features">{t.nav_features}</a></li>
       <li><a href="#download">{t.nav_download}</a></li>
