@@ -1,35 +1,11 @@
 ---
+import Layout from '../../components/Layout.astro';
 ---
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Datenschutzerklärung — Strategy Tracker</title>
-  <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="/styles/global.css" />
-  <style>
-    .legal-body {
-      max-width: 720px;
-      margin: 60px auto;
-      padding: 0 24px 80px;
-    }
-    .legal-body h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 32px; }
-    .legal-body h2 { font-size: 1.05rem; font-weight: 700; margin: 28px 0 8px; }
-    .legal-body p, .legal-body li { font-size: 0.95rem; color: #334155; line-height: 1.7; }
-    .legal-body ul { padding-left: 20px; margin: 8px 0; }
-    .legal-body li { margin-bottom: 4px; }
-    .back { display: inline-block; margin-bottom: 32px; color: #5b21b6; font-size: 0.9rem; font-weight: 600; }
-  </style>
-</head>
-<body>
+<Layout title="Datenschutzerklärung — Strategy Tracker" lang="de" noindex={true}>
   <div class="legal-body">
-    <a href="/de/" class="back">← Strategy Tracker</a>
     <h1>Datenschutzerklärung</h1>
-
     <h2>1. Verantwortlicher</h2>
     <p>Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist die im <a href="/de/legal">Impressum</a> genannte Person.</p>
-
     <h2>2. Welche Daten wir verarbeiten</h2>
     <p>Bei der Nutzung dieser Anwendung werden folgende personenbezogene Daten erhoben und verarbeitet:</p>
     <ul>
@@ -39,23 +15,17 @@
       <li>Generierte Lottoscheine und zugehörige Zeitstempel</li>
       <li>Zeitpunkt der Kontoerstellung und letzten Aktualisierung</li>
     </ul>
-
     <h2>3. Zweck und Rechtsgrundlage</h2>
     <p>Die Daten werden ausschließlich zur Bereitstellung des Dienstes verarbeitet — konkret zur Authentifizierung, zur Zuordnung gespeicherter Lottoscheine zum jeweiligen Konto sowie zur Analyse von Erwartungswerten.</p>
     <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung): die Verarbeitung ist erforderlich, um den Dienst gemäß den Nutzungsbedingungen bereitzustellen.</p>
-
     <h2>4. Hosting und Speicherort</h2>
     <p>Die Anwendung und alle damit verbundenen Daten werden auf Servern von Fly.io (Rechenzentrum Frankfurt am Main, Deutschland) gehostet. Die Daten werden ausschließlich innerhalb der Europäischen Union verarbeitet und gespeichert.</p>
-
     <h2>5. Weitergabe an Dritte</h2>
     <p>Personenbezogene Daten werden nicht an Dritte weitergegeben, verkauft oder anderweitig übermittelt. Es werden keine Analyse-, Werbe- oder Tracking-Dienste eingesetzt.</p>
-
     <h2>6. Cookies und lokale Speicherung</h2>
     <p>Die Anwendung setzt keine Cookies. Im Web-Browser wird das Sitzungstoken zur Aufrechterhaltung der Anmeldung im lokalen Speicher (localStorage) des Browsers gespeichert. Dieses Token enthält keine personenbezogenen Daten und wird beim Abmelden gelöscht.</p>
-
     <h2>7. Speicherdauer</h2>
     <p>Daten werden solange gespeichert, wie das Benutzerkonto besteht. Nach Löschung des Kontos werden alle zugehörigen personenbezogenen Daten unverzüglich entfernt.</p>
-
     <h2>8. Ihre Rechte</h2>
     <p>Sie haben gemäß DSGVO folgende Rechte:</p>
     <ul>
@@ -67,12 +37,9 @@
       <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
     </ul>
     <p>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an die im <a href="/de/legal">Impressum</a> genannte E-Mail-Adresse.</p>
-
     <h2>9. Beschwerderecht</h2>
     <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren. Zuständige Behörde ist der Landesbeauftragte für den Datenschutz und die Informationsfreiheit des jeweiligen Bundeslandes.</p>
-
     <h2>10. Änderungen dieser Datenschutzerklärung</h2>
     <p>Diese Datenschutzerklärung kann aktualisiert werden, wenn sich der Dienst oder die anwendbaren Gesetze ändern. Die aktuelle Version ist stets unter dieser URL verfügbar.</p>
   </div>
-</body>
-</html>
+</Layout>

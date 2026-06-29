@@ -339,6 +339,20 @@ footer strong {
   margin-bottom: 8px;
 }
 
+/* LEGAL / PRIVACY PAGES */
+.legal-body {
+  max-width: 720px;
+  margin: 60px auto;
+  padding: 0 24px 80px;
+}
+.legal-body h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 32px; }
+.legal-body h2 { font-size: 1.05rem; font-weight: 700; margin: 28px 0 8px; }
+.legal-body p, .legal-body li { font-size: 0.95rem; color: #334155; line-height: 1.7; }
+.legal-body ul { padding-left: 20px; margin: 8px 0; }
+.legal-body li { margin-bottom: 4px; }
+.legal-body a { color: var(--brand); text-decoration: underline; }
+.todo { background: #fef3c7; border: 1px solid #f59e0b; border-radius: 6px; padding: 8px 12px; font-size: 0.85rem; color: #92400e; margin-bottom: 4px; }
+
 @media (max-width: 600px) {
   .nav-links { display: none; }
   section { padding: 60px 20px; }

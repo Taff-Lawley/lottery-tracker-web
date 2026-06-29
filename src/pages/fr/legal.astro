@@ -1,42 +1,13 @@
 ---
+import Layout from '../../components/Layout.astro';
 ---
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mentions légales — Strategy Tracker</title>
-  <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="/styles/global.css" />
-  <style>
-    .legal-body {
-      max-width: 720px;
-      margin: 60px auto;
-      padding: 0 24px 80px;
-    }
-    .legal-body h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 32px; }
-    .legal-body h2 { font-size: 1.05rem; font-weight: 700; margin: 28px 0 8px; }
-    .legal-body p { font-size: 0.95rem; color: #334155; line-height: 1.7; }
-    .back { display: inline-block; margin-bottom: 32px; color: #5b21b6; font-size: 0.9rem; font-weight: 600; }
-    .todo { background: #fef3c7; border: 1px solid #f59e0b; border-radius: 6px; padding: 8px 12px; font-size: 0.85rem; color: #92400e; margin-bottom: 4px; }
-  </style>
-</head>
-<body>
+<Layout title="Mentions légales — Strategy Tracker" lang="fr" noindex={true}>
   <div class="legal-body">
-    <a href="/fr/" class="back">← Strategy Tracker</a>
     <h1>Mentions légales</h1>
-
     <h2>Informations selon la loi applicable</h2>
     <p class="todo">⚠️ TODO: Remplacer par les vraies informations avant la mise en ligne</p>
-    <p>
-      Adrian Lawley<br />
-      TODO: Rue et numéro<br />
-      TODO: Code postal et ville<br />
-      TODO: Pays
-    </p>
-
+    <p>Adrian Lawley<br />TODO: Rue et numéro<br />TODO: Code postal et ville<br />TODO: Pays</p>
     <h2>Contact</h2>
     <p>Courriel : <a href="mailto:a.lawley@deine-tierwelt.de">a.lawley@deine-tierwelt.de</a></p>
   </div>
-</body>
-</html>
+</Layout>
