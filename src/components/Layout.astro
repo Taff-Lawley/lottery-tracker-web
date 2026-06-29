@@ -24,6 +24,8 @@ const home = langPaths[lang];
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   {noindex && <meta name="robots" content="noindex" />}
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="stylesheet" href="/styles/global.css" />
   <slot name="head" />
 </head>
@@ -31,7 +33,9 @@ const home = langPaths[lang];
 
 <nav>
   <div class="nav-inner">
-    <a href={home} class="nav-logo">Strategy Tracker</a>
+    <a href={home} class="nav-logo">
+      <img src="/images/strategy-tracker-logo-48.png" alt="Strategy Tracker logo" width="24" height="24" style="vertical-align:middle;margin-right:8px;border-radius:6px" />Strategy Tracker
+    </a>
     <ul class="nav-links">
       <li><a href={`${home}#features`}>{t.nav_features}</a></li>
       <li><a href={`${home}#download`}>{t.nav_download}</a></li>
