@@ -1,4 +1,4 @@
-name: Deploy to HostEurope
+name: Deploy to Strato
 
 on:
   push:
@@ -23,14 +23,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Install lftp
-        run: sudo apt-get install -y lftp
-
-      - name: Deploy via FTPS
-        env:
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" \
-            -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate false; set net:timeout 30; set ftp:passive-mode true; set umask 022; mirror -R --delete --verbose ./dist/ /www/strategy-tracker/; quit" \
-            wp1066884.server-he.de
+      - name: Deploy via rsync
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avz --delete
+          path: dist/
+          remote_path: strategy-tracker/
+          remote_host: ${{ secrets.STRATO_SSH_HOST }}
+          remote_user: ${{ secrets.STRATO_SSH_USER }}
+          remote_key: ${{ secrets.STRATO_SSH_KEY }}
