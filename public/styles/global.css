@@ -30,9 +30,8 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
+  background: #0d0e1c;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   padding: 0 24px;
 }
 
@@ -49,8 +48,17 @@ nav {
 .nav-logo {
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--brand);
+  color: white;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo img {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
 }
 
 .nav-links {
@@ -61,11 +69,11 @@ nav {
 
 .nav-links a {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.65);
   font-weight: 500;
   transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--brand); }
+.nav-links a:hover { color: white; }
 
 .lang-select {
   appearance: none;
