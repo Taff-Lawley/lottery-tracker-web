@@ -23,17 +23,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
       - name: Deploy via rsync
-        env:
-          STRATO_SSH_KEY: ${{ secrets.STRATO_SSH_KEY }}
-          STRATO_SSH_HOST: ${{ secrets.STRATO_SSH_HOST }}
-          STRATO_SSH_USER: ${{ secrets.STRATO_SSH_USER }}
         run: |
-          mkdir -p ~/.ssh
-          echo "$STRATO_SSH_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H "$STRATO_SSH_HOST" >> ~/.ssh/known_hosts
-          rsync -avz --delete \
-            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+          sshpass -p "$STRATO_SSH_PASS" rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
             dist/ \
-            "$STRATO_SSH_USER@$STRATO_SSH_HOST:strategy-tracker/"
+            ${{ secrets.STRATO_SSH_USER }}@${{ secrets.STRATO_SSH_HOST }}:strategy-tracker/
+        env:
+          STRATO_SSH_PASS: ${{ secrets.STRATO_SSH_PASS }}
