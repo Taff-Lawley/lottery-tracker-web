@@ -50,6 +50,14 @@ export const translations = {
         url: 'https://strategy-tracking-app.lawley.de',
       },
       {
+        tag: 'Finance Dashboard',
+        title: 'Budget Insights',
+        description:
+          'Personal finance dashboard with transaction management, spending breakdowns by category, income vs. expenses charts, and an AI insights panel. Includes demo data, dark mode, and full authentication.',
+        stack: ['Laravel 12', 'Vue 3', 'TypeScript', 'Inertia', 'Tailwind CSS', 'Chart.js', 'Pest', 'Docker'],
+        url: 'http://budget-insights.lawley.de',
+      },
+      {
         tag: 'AI Tool',
         title: 'Immo',
         description:
@@ -64,14 +72,6 @@ export const translations = {
           'Anonymous, real-time meeting feedback for teams. Share a link at the end of a meeting, collect honest ratings, and get an AI-generated summary of what worked and what to improve.',
         stack: ['Vue 3', 'Express', 'Claude AI', 'PostgreSQL', 'Docker', 'GitHub Actions'],
         url: 'https://meeting-rater.lawley.de',
-      },
-      {
-        tag: 'Finance Dashboard',
-        title: 'Budget Insights',
-        description:
-          'Personal finance dashboard with transaction management, spending breakdowns by category, income vs. expenses charts, and an AI insights panel. Includes demo data, dark mode, and full authentication.',
-        stack: ['Laravel 12', 'Vue 3', 'TypeScript', 'Inertia', 'Tailwind CSS', 'Chart.js', 'Pest', 'Docker'],
-        url: 'http://budget-insights.lawley.de',
       },
     ],
   },
@@ -124,6 +124,14 @@ export const translations = {
         url: 'https://strategy-tracking-app.lawley.de',
       },
       {
+        tag: 'Finanz-Dashboard',
+        title: 'Budget Insights',
+        description:
+          'Persönliches Finanz-Dashboard mit Transaktionsverwaltung, Ausgaben nach Kategorie, Einnahmen-Ausgaben-Diagrammen und einem KI-Insights-Panel. Inklusive Demo-Daten, Dark Mode und vollständiger Authentifizierung.',
+        stack: ['Laravel 12', 'Vue 3', 'TypeScript', 'Inertia', 'Tailwind CSS', 'Chart.js', 'Pest', 'Docker'],
+        url: 'http://budget-insights.lawley.de',
+      },
+      {
         tag: 'KI-Tool',
         title: 'Immo',
         description:
@@ -138,14 +146,6 @@ export const translations = {
           'Anonymes Echtzeit-Meeting-Feedback für Teams. Link am Ende eines Meetings teilen, ehrliche Bewertungen sammeln und eine KI-generierte Zusammenfassung erhalten, was gut lief und was verbessert werden kann.',
         stack: ['Vue 3', 'Express', 'Claude AI', 'PostgreSQL', 'Docker', 'GitHub Actions'],
         url: 'https://meeting-rater.lawley.de',
-      },
-      {
-        tag: 'Finanz-Dashboard',
-        title: 'Budget Insights',
-        description:
-          'Persönliches Finanz-Dashboard mit Transaktionsverwaltung, Ausgaben nach Kategorie, Einnahmen-Ausgaben-Diagrammen und einem KI-Insights-Panel. Inklusive Demo-Daten, Dark Mode und vollständiger Authentifizierung.',
-        stack: ['Laravel 12', 'Vue 3', 'TypeScript', 'Inertia', 'Tailwind CSS', 'Chart.js', 'Pest', 'Docker'],
-        url: 'http://budget-insights.lawley.de',
       },
     ],
   },
