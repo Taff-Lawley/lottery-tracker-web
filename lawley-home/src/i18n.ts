@@ -39,7 +39,7 @@ export const translations = {
         description:
           'Marketing site for the Strategy Tracker iOS app. Multi-language (EN/DE/FR), built with Astro for fast static delivery. Covers features, FAQ, legal, and App Store download. App not yet publicly launched — legal and subscription flows are still being finalised.',
         stack: ['Astro', 'TypeScript', 'CSS', 'GitHub Actions'],
-        url: 'https://strategy-tracker.lawley.de',
+        url: 'http://strategy-tracker.lawley.de',
       },
       {
         tag: 'Web App',
@@ -47,7 +47,7 @@ export const translations = {
         description:
           'Flutter web version of the iOS lottery strategy tracker. Runs in the browser with the full feature set — draw history, expected value analysis, ticket generation, and subscription management. Backend powered by Python and FastAPI with DuckDB for analytics. Covers five lotteries across multiple countries. Telegram notifications for scraper events and deploys. Not yet publicly launched.',
         stack: ['Flutter', 'Dart', 'Python', 'FastAPI', 'DuckDB', 'pytest', 'Docker', 'Fly.io', 'GitHub Actions', 'Telegram'],
-        url: 'https://strategy-tracking-app.lawley.de',
+        url: 'http://strategy-tracking-app.lawley.de',
       },
       {
         tag: 'Finance Dashboard',
@@ -63,7 +63,7 @@ export const translations = {
         description:
           'AI-powered exposé generator for German estate agents. Paste in property details and get a polished, professional listing description in seconds, streamed live via Claude. <strong>Contact me for API access.</strong>',
         stack: ['Vue 3', 'Python', 'FastAPI', 'Claude AI', 'Docker', 'Fly.io', 'GitHub Actions'],
-        url: 'https://immo.lawley.de',
+        url: 'http://immo.lawley.de',
       },
       {
         tag: 'Feedback Tool',
@@ -71,7 +71,7 @@ export const translations = {
         description:
           'Anonymous, real-time meeting feedback for teams. Share a link at the end of a meeting, collect honest ratings, and get an AI-generated summary of what worked and what to improve.',
         stack: ['Vue 3', 'Express', 'Claude AI', 'PostgreSQL', 'Docker', 'GitHub Actions'],
-        url: 'https://meeting-rater.lawley.de',
+        url: 'http://meeting-rater.lawley.de',
       },
     ],
   },
@@ -113,7 +113,7 @@ export const translations = {
         description:
           'Marketingseite für die Strategy Tracker iOS-App. Mehrsprachig (EN/DE/FR), mit Astro für schnelle statische Auslieferung gebaut. Enthält Features, FAQ, rechtliche Seiten und App-Store-Download. App noch nicht öffentlich verfügbar — rechtliche Seiten und Abonnement-Flows werden noch finalisiert.',
         stack: ['Astro', 'TypeScript', 'CSS', 'GitHub Actions'],
-        url: 'https://strategy-tracker.lawley.de',
+        url: 'http://strategy-tracker.lawley.de',
       },
       {
         tag: 'Web-App',
@@ -121,7 +121,7 @@ export const translations = {
         description:
           'Flutter-Webversion des iOS-Lotteriestrategie-Trackers. Läuft im Browser mit vollem Funktionsumfang — Ziehungshistorie, Erwartungswertanalyse, Ticketgenerierung und Abonnementverwaltung. Backend auf Basis von Python und FastAPI mit DuckDB für Analytics. Aktuell fünf Lotterien aus mehreren Ländern abgedeckt. Telegram-Benachrichtigungen für Scraper-Events und Deployments. Noch nicht öffentlich verfügbar.',
         stack: ['Flutter', 'Dart', 'Python', 'FastAPI', 'DuckDB', 'pytest', 'Docker', 'Fly.io', 'GitHub Actions', 'Telegram'],
-        url: 'https://strategy-tracking-app.lawley.de',
+        url: 'http://strategy-tracking-app.lawley.de',
       },
       {
         tag: 'Finanz-Dashboard',
@@ -137,7 +137,7 @@ export const translations = {
         description:
           'KI-gestützter Exposé-Generator für deutsche Immobilienmakler. Immobiliendaten eingeben und in Sekunden eine polierte, professionelle Angebotsbeschreibung erhalten – live via Claude gestreamt. <strong>Für API-Zugang gerne kontaktieren.</strong>',
         stack: ['Vue 3', 'Python', 'FastAPI', 'Claude AI', 'Docker', 'Fly.io', 'GitHub Actions'],
-        url: 'https://immo.lawley.de',
+        url: 'http://immo.lawley.de',
       },
       {
         tag: 'Feedback-Tool',
@@ -145,7 +145,7 @@ export const translations = {
         description:
           'Anonymes Echtzeit-Meeting-Feedback für Teams. Link am Ende eines Meetings teilen, ehrliche Bewertungen sammeln und eine KI-generierte Zusammenfassung erhalten, was gut lief und was verbessert werden kann.',
         stack: ['Vue 3', 'Express', 'Claude AI', 'PostgreSQL', 'Docker', 'GitHub Actions'],
-        url: 'https://meeting-rater.lawley.de',
+        url: 'http://meeting-rater.lawley.de',
       },
     ],
   },
