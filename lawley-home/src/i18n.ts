@@ -47,7 +47,7 @@ export const translations = {
         description:
           'Flutter web version of the iOS lottery strategy tracker. Runs in the browser with the full feature set — draw history, expected value analysis, ticket generation, and subscription management. Backend powered by Python and FastAPI with DuckDB for analytics. Covers five lotteries across multiple countries. Telegram notifications for scraper events and deploys. Not yet publicly launched.',
         stack: ['Flutter', 'Dart', 'Python', 'FastAPI', 'DuckDB', 'pytest', 'Docker', 'Fly.io', 'GitHub Actions', 'Telegram'],
-        url: 'http://strategy-tracking-app.lawley.de',
+        url: 'http://strategy-tracker-app.lawley.de',
       },
       {
         tag: 'Finance Dashboard',
@@ -121,7 +121,7 @@ export const translations = {
         description:
           'Flutter-Webversion des iOS-Lotteriestrategie-Trackers. Läuft im Browser mit vollem Funktionsumfang — Ziehungshistorie, Erwartungswertanalyse, Ticketgenerierung und Abonnementverwaltung. Backend auf Basis von Python und FastAPI mit DuckDB für Analytics. Aktuell fünf Lotterien aus mehreren Ländern abgedeckt. Telegram-Benachrichtigungen für Scraper-Events und Deployments. Noch nicht öffentlich verfügbar.',
         stack: ['Flutter', 'Dart', 'Python', 'FastAPI', 'DuckDB', 'pytest', 'Docker', 'Fly.io', 'GitHub Actions', 'Telegram'],
-        url: 'http://strategy-tracking-app.lawley.de',
+        url: 'http://strategy-tracker-app.lawley.de',
       },
       {
         tag: 'Finanz-Dashboard',
