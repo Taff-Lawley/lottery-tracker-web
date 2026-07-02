@@ -17,20 +17,37 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install dependencies (strategy-tracker)
         run: npm ci
 
-      - name: Build
+      - name: Build (strategy-tracker)
         run: npm run build
+
+      - name: Install dependencies (lawley-home)
+        run: npm ci
+        working-directory: lawley-home
+
+      - name: Build (lawley-home)
+        run: npm run build
+        working-directory: lawley-home
 
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
 
-      - name: Deploy via rsync
+      - name: Deploy strategy-tracker
         run: |
           sshpass -p "$STRATO_SSH_PASS" rsync -avz --delete \
             -e "ssh -o StrictHostKeyChecking=no" \
             dist/ \
             ${{ secrets.STRATO_SSH_USER }}@${{ secrets.STRATO_SSH_HOST }}:strategy-tracker/
+        env:
+          STRATO_SSH_PASS: ${{ secrets.STRATO_SSH_PASS }}
+
+      - name: Deploy lawley-home
+        run: |
+          sshpass -p "$STRATO_SSH_PASS" rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            lawley-home/dist/ \
+            ${{ secrets.STRATO_SSH_USER }}@${{ secrets.STRATO_SSH_HOST }}:web/
         env:
           STRATO_SSH_PASS: ${{ secrets.STRATO_SSH_PASS }}

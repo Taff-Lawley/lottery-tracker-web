@@ -1,0 +1,181 @@
+---
+import { translations } from '../i18n';
+const t = translations.de;
+const year = new Date().getFullYear();
+const canonical = 'https://lawley.de/';
+---
+
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{t.title}</title>
+  <meta name="description" content={t.meta_description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang="de" href="https://lawley.de/" />
+  <link rel="alternate" hreflang="en" href="https://lawley.de/en/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={t.title} />
+  <meta property="og:description" content={t.meta_description} />
+  <meta property="og:image" content="https://lawley.de/images/logo.png" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={t.title} />
+  <meta name="twitter:description" content={t.meta_description} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adrian Lawley",
+    "url": "https://lawley.de",
+    "jobTitle": "Full-Stack-Entwickler",
+    "description": t.meta_description,
+  })} />
+
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+<body>
+
+<div class="ssl-banner">
+  Einige Links funktionieren derzeit noch nicht — SSL-Zertifikate sind in Bearbeitung. Tipp: <strong>https</strong> in der Adresszeile durch <strong>http</strong> ersetzen.
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-top">
+      <a href="/" class="nav-logo">
+        <picture>
+          <source srcset="/images/logo.webp" type="image/webp" />
+          <img src="/images/logo.png" alt="Adrian Lawley" height="96" />
+        </picture>
+      </a>
+      <div class="nav-lang">
+        <a href="/en/">EN</a>
+        <a href="/" class="lang-active">DE</a>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">{t.nav_about}</a>
+      <a href="#projects">{t.nav_projects}</a>
+      <a href="#contact">{t.nav_contact}</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>{t.hero_h1}</h1>
+    <h2>{t.hero_h2}</h2>
+    <p class="hero-tagline">{t.hero_tagline}</p>
+    <p>{t.hero_sub}</p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <h2>{t.about_h2}</h2>
+    <p>{t.about_paragraphs[0]}</p>
+    <div class="about-more" id="about-more" hidden>
+      {t.about_paragraphs.slice(1).map(p => <p>{p}</p>)}
+    </div>
+    <button class="read-more-btn" id="read-more-btn" data-more={t.read_more} data-less={t.read_less}>
+      {t.read_more}
+    </button>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('read-more-btn') as HTMLButtonElement;
+  const more = document.getElementById('about-more') as HTMLElement;
+  btn.addEventListener('click', () => {
+    const expanded = !more.hidden;
+    more.hidden = expanded;
+    btn.textContent = expanded ? btn.dataset.more! : btn.dataset.less!;
+  });
+</script>
+
+<section class="projects" id="projects">
+  <div class="projects-inner">
+    <div class="section-header">
+      <h2>{t.projects_h2}</h2>
+      <p>{t.projects_sub}</p>
+    </div>
+    <div class="projects-grid">
+      {t.projects.map((p, i) => (
+        <div class="project-card">
+          <span class="project-tag">{p.tag}</span>
+          <h3>{p.title}</h3>
+          <p set:html={p.description} />
+          <div class="project-stack">
+            {p.stack.map(s => <span class="stack-pill">{s}</span>)}
+          </div>
+          <a href={p.url} class="project-link" target="_blank" rel="noopener">
+            {i === 0 ? t.visit : t.open}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-header">
+      <h2>{t.contact_h2}</h2>
+      <p>{t.contact_sub}</p>
+    </div>
+    <form class="contact-form" id="contact-form">
+      <input type="hidden" name="access_key" value="afd0ef19-c377-4345-8e47-b4af12fb776a" />
+      <input type="hidden" name="subject" value="Neue Anfrage über lawley.de" />
+      <input type="checkbox" name="botcheck" style="display:none" />
+      <div class="form-row">
+        <label for="name-de">{t.contact_name}</label>
+        <input type="text" id="name-de" name="name" required placeholder={t.contact_name} />
+      </div>
+      <div class="form-row">
+        <label for="email-de">{t.contact_email}</label>
+        <input type="email" id="email-de" name="email" required placeholder={t.contact_email} />
+      </div>
+      <div class="form-row">
+        <label for="message-de">{t.contact_message}</label>
+        <textarea id="message-de" name="message" rows="5" required placeholder={t.contact_message}></textarea>
+      </div>
+      <button type="submit" class="contact-btn">{t.contact_send}</button>
+      <p class="form-success" id="form-success" hidden>{t.contact_success}</p>
+      <p class="form-error" id="form-error" hidden>{t.contact_error}</p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const success = document.getElementById('form-success') as HTMLElement;
+  const error = document.getElementById('form-error') as HTMLElement;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (res.ok) {
+      form.reset();
+      success.hidden = false;
+      error.hidden = true;
+    } else {
+      error.hidden = false;
+      success.hidden = true;
+    }
+  });
+</script>
+
+<footer>
+  <p>{t.footer.replace('{year}', String(year))}</p>
+</footer>
+
+</body>
+</html>

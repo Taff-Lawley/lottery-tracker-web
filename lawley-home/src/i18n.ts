@@ -1,0 +1,136 @@
+export type Lang = 'en' | 'de';
+
+export const translations = {
+  en: {
+    title: 'Adrian Lawley — Web & App Development',
+    meta_description: 'Adrian Lawley is a full-stack developer building web apps, iOS apps, and AI tools. Based in Germany.',
+    hero_h1: 'Adrian Lawley',
+    hero_h2: 'Senior Full-Stack Developer',
+    hero_tagline: 'Building things that work.',
+    hero_sub: 'Full-stack developer. Apps, AI tools, and web projects.',
+    projects_h2: 'Projects',
+    projects_sub: 'A selection of things I\'ve built and shipped.',
+    footer: '© {year} Adrian Lawley',
+    about_h2: 'About Me',
+    about_paragraphs: [
+      'Hi, I\'m Adrian. For over 20 years I\'ve been building web applications and digital platforms — from classic PHP projects to modern cloud architectures. Alongside the technical side, I\'ve led a development team as Team Lead and know how much good communication, clear priorities, and pragmatic decisions matter.',
+      'Most recently I worked at DeineTierwelt on a platform built with Laravel and Vue.js. I also built reporting pipelines with Google Analytics 4 and Looker Studio to support data-driven decisions. Currently I\'m deep in AI-assisted development tools like Claude Code and increasingly weaving them into my day-to-day workflow.',
+      'I care about clean code, pragmatic solutions, and products that create real value. If you\'re looking for someone who combines technical depth with leadership experience and an eye on the bigger picture, I\'d love to hear from you.',
+    ],
+    read_more: 'Read more',
+    read_less: 'Read less',
+    nav_about: 'About',
+    nav_projects: 'Projects',
+    nav_contact: 'Contact',
+    visit: 'Visit site',
+    open: 'Open app',
+    contact_h2: 'Get in Touch',
+    contact_sub: 'Open to new opportunities. Drop me a message and I\'ll get back to you.',
+    contact_name: 'Name',
+    contact_email: 'Email',
+    contact_message: 'Message',
+    contact_send: 'Send Message',
+    contact_success: 'Message sent — thanks, I\'ll be in touch soon.',
+    contact_error: 'Something went wrong. Please try again or email me directly.',
+    projects: [
+      {
+        tag: 'Landing Page',
+        title: 'Strategy Tracker — Web',
+        description:
+          'Marketing site for the Strategy Tracker iOS app. Multi-language (EN/DE/FR), built with Astro for fast static delivery. Covers features, FAQ, legal, and App Store download. App not yet publicly launched — legal and subscription flows are still being finalised.',
+        stack: ['Astro', 'TypeScript', 'CSS', 'GitHub Actions'],
+        url: 'https://strategy-tracker.lawley.de',
+      },
+      {
+        tag: 'Web App',
+        title: 'Strategy Tracker — App',
+        description:
+          'Flutter web version of the iOS lottery strategy tracker. Runs in the browser with the full feature set — draw history, expected value analysis, ticket generation, and subscription management. Backend powered by Python and FastAPI with DuckDB for analytics. Covers five lotteries across multiple countries. Telegram notifications for scraper events and deploys. Not yet publicly launched.',
+        stack: ['Flutter', 'Dart', 'Python', 'FastAPI', 'DuckDB', 'pytest', 'Docker', 'Fly.io', 'GitHub Actions', 'Telegram'],
+        url: 'https://strategy-tracking-app.lawley.de',
+      },
+      {
+        tag: 'AI Tool',
+        title: 'Immo',
+        description:
+          'AI-powered exposé generator for German estate agents. Paste in property details and get a polished, professional listing description in seconds, streamed live via Claude. <strong>Contact me for API access.</strong>',
+        stack: ['Vue 3', 'Python', 'FastAPI', 'Claude AI', 'Docker', 'Fly.io', 'GitHub Actions'],
+        url: 'https://immo.lawley.de',
+      },
+      {
+        tag: 'Feedback Tool',
+        title: 'Meeting Rater',
+        description:
+          'Anonymous, real-time meeting feedback for teams. Share a link at the end of a meeting, collect honest ratings, and get an AI-generated summary of what worked and what to improve.',
+        stack: ['Vue 3', 'Express', 'Claude AI', 'PostgreSQL', 'Docker', 'GitHub Actions'],
+        url: 'https://meeting-rater.lawley.de',
+      },
+    ],
+  },
+  de: {
+    title: 'Adrian Lawley — Web- & App-Entwicklung',
+    meta_description: 'Adrian Lawley ist ein Full-Stack-Entwickler und baut Web-Apps, iOS-Apps und KI-Tools. Ansässig in Deutschland.',
+    hero_h1: 'Adrian Lawley',
+    hero_h2: 'Senior Full-Stack Entwickler',
+    hero_tagline: 'Dinge bauen, die funktionieren.',
+    hero_sub: 'Full-Stack-Entwickler. Apps, KI-Tools und Webprojekte.',
+    projects_h2: 'Projekte',
+    projects_sub: 'Eine Auswahl an Dingen, die ich gebaut und veröffentlicht habe.',
+    footer: '© {year} Adrian Lawley',
+    about_h2: 'Über mich',
+    about_paragraphs: [
+      'Moin, ich bin Adrian. Seit über 20 Jahren entwickle ich Webanwendungen und digitale Plattformen – von klassischen PHP-Projekten bis hin zu modernen Cloud-Architekturen. Neben meiner technischen Arbeit habe ich bereits ein Entwicklerteam als Team Lead geführt und weiß, wie wichtig gute Kommunikation, klare Prioritäten und pragmatische Entscheidungen sind.',
+      'Zuletzt habe ich bei DeineTierwelt an einer Plattform auf Basis von Laravel und Vue.js gearbeitet. Außerdem habe ich mit Google Analytics 4 und Looker Studio aussagekräftige Reports erstellt, um datenbasierte Entscheidungen zu unterstützen. Aktuell beschäftige ich mich intensiv mit KI-gestützten Entwicklungstools wie Claude Code und integriere sie zunehmend in meinen Entwicklungsalltag.',
+      'Ich mag sauberen Code, pragmatische Lösungen und Produkte, die echten Mehrwert schaffen. Wenn Sie jemanden suchen, der technische Erfahrung mit Führungsverantwortung und einem Blick fürs Ganze verbindet, freue ich mich darauf, von Ihnen zu hören.',
+    ],
+    read_more: 'Mehr lesen',
+    read_less: 'Weniger anzeigen',
+    nav_about: 'Über mich',
+    nav_projects: 'Projekte',
+    nav_contact: 'Kontakt',
+    visit: 'Zur Website',
+    open: 'App öffnen',
+    contact_h2: 'Kontakt',
+    contact_sub: 'Offen für neue Möglichkeiten. Schreiben Sie mir — ich melde mich zeitnah.',
+    contact_name: 'Name',
+    contact_email: 'E-Mail',
+    contact_message: 'Nachricht',
+    contact_send: 'Nachricht senden',
+    contact_success: 'Nachricht gesendet — vielen Dank, ich melde mich bald.',
+    contact_error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.',
+    projects: [
+      {
+        tag: 'Landingpage',
+        title: 'Strategy Tracker — Web',
+        description:
+          'Marketingseite für die Strategy Tracker iOS-App. Mehrsprachig (EN/DE/FR), mit Astro für schnelle statische Auslieferung gebaut. Enthält Features, FAQ, rechtliche Seiten und App-Store-Download. App noch nicht öffentlich verfügbar — rechtliche Seiten und Abonnement-Flows werden noch finalisiert.',
+        stack: ['Astro', 'TypeScript', 'CSS', 'GitHub Actions'],
+        url: 'https://strategy-tracker.lawley.de',
+      },
+      {
+        tag: 'Web-App',
+        title: 'Strategy Tracker — App',
+        description:
+          'Flutter-Webversion des iOS-Lotteriestrategie-Trackers. Läuft im Browser mit vollem Funktionsumfang — Ziehungshistorie, Erwartungswertanalyse, Ticketgenerierung und Abonnementverwaltung. Backend auf Basis von Python und FastAPI mit DuckDB für Analytics. Aktuell fünf Lotterien aus mehreren Ländern abgedeckt. Telegram-Benachrichtigungen für Scraper-Events und Deployments. Noch nicht öffentlich verfügbar.',
+        stack: ['Flutter', 'Dart', 'Python', 'FastAPI', 'DuckDB', 'pytest', 'Docker', 'Fly.io', 'GitHub Actions', 'Telegram'],
+        url: 'https://strategy-tracking-app.lawley.de',
+      },
+      {
+        tag: 'KI-Tool',
+        title: 'Immo',
+        description:
+          'KI-gestützter Exposé-Generator für deutsche Immobilienmakler. Immobiliendaten eingeben und in Sekunden eine polierte, professionelle Angebotsbeschreibung erhalten – live via Claude gestreamt. <strong>Für API-Zugang gerne kontaktieren.</strong>',
+        stack: ['Vue 3', 'Python', 'FastAPI', 'Claude AI', 'Docker', 'Fly.io', 'GitHub Actions'],
+        url: 'https://immo.lawley.de',
+      },
+      {
+        tag: 'Feedback-Tool',
+        title: 'Meeting Rater',
+        description:
+          'Anonymes Echtzeit-Meeting-Feedback für Teams. Link am Ende eines Meetings teilen, ehrliche Bewertungen sammeln und eine KI-generierte Zusammenfassung erhalten, was gut lief und was verbessert werden kann.',
+        stack: ['Vue 3', 'Express', 'Claude AI', 'PostgreSQL', 'Docker', 'GitHub Actions'],
+        url: 'https://meeting-rater.lawley.de',
+      },
+    ],
+  },
+} satisfies Record<Lang, unknown>;
