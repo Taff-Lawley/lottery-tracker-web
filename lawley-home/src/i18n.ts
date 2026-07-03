@@ -63,7 +63,7 @@ export const translations = {
         description:
           'AI-powered exposé generator for German estate agents. Paste in property details and get a polished, professional listing description in seconds, streamed live via Claude. <strong>Contact me for API access.</strong>',
         stack: ['Vue 3', 'Python', 'FastAPI', 'Claude AI', 'Docker', 'Fly.io', 'GitHub Actions'],
-        url: 'https://immo.lawley.de',
+        url: 'https://immo-expose.lawley.de',
       },
       {
         tag: 'Feedback Tool',
@@ -137,7 +137,7 @@ export const translations = {
         description:
           'KI-gestützter Exposé-Generator für deutsche Immobilienmakler. Immobiliendaten eingeben und in Sekunden eine polierte, professionelle Angebotsbeschreibung erhalten – live via Claude gestreamt. <strong>Für API-Zugang gerne kontaktieren.</strong>',
         stack: ['Vue 3', 'Python', 'FastAPI', 'Claude AI', 'Docker', 'Fly.io', 'GitHub Actions'],
-        url: 'https://immo.lawley.de',
+        url: 'https://immo-expose.lawley.de',
       },
       {
         tag: 'Feedback-Tool',
