@@ -1,5 +1,18 @@
 export type Lang = 'en' | 'de';
 
+export interface Screenshot {
+  src: string;
+  caption: string;
+}
+
+export const projectScreenshots: Record<string, Screenshot[]> = {
+  'strategy-tracker-web': [],
+  'strategy-tracker-app': [],
+  'budget-insights': [],
+  'immo': [],
+  'meeting-rater': [],
+};
+
 export const translations = {
   en: {
     title: 'Adrian Lawley — Web & App Development',
@@ -34,6 +47,8 @@ export const translations = {
     contact_error: 'Something went wrong. Please try again or email me directly.',
     projects: [
       {
+        id: 'strategy-tracker-web',
+        link: 'visit' as const,
         tag: 'Landing Page',
         title: 'Strategy Tracker — Web',
         description:
@@ -42,6 +57,8 @@ export const translations = {
         url: 'https://strategy-tracker.lawley.de',
       },
       {
+        id: 'strategy-tracker-app',
+        link: 'open' as const,
         tag: 'Web App',
         title: 'Strategy Tracker — App',
         description:
@@ -50,6 +67,8 @@ export const translations = {
         url: 'https://strategy-tracker-app.lawley.de',
       },
       {
+        id: 'budget-insights',
+        link: 'open' as const,
         tag: 'Finance Dashboard',
         title: 'Budget Insights',
         description:
@@ -58,6 +77,8 @@ export const translations = {
         url: 'https://budget-insights.lawley.de',
       },
       {
+        id: 'immo',
+        link: 'open' as const,
         tag: 'AI Tool',
         title: 'Immo',
         description:
@@ -66,6 +87,8 @@ export const translations = {
         url: 'https://immo-expose.lawley.de',
       },
       {
+        id: 'meeting-rater',
+        link: 'open' as const,
         tag: 'Feedback Tool',
         title: 'Meeting Rater',
         description:
@@ -108,6 +131,8 @@ export const translations = {
     contact_error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.',
     projects: [
       {
+        id: 'strategy-tracker-web',
+        link: 'visit' as const,
         tag: 'Landingpage',
         title: 'Strategy Tracker — Web',
         description:
@@ -116,6 +141,8 @@ export const translations = {
         url: 'https://strategy-tracker.lawley.de',
       },
       {
+        id: 'strategy-tracker-app',
+        link: 'open' as const,
         tag: 'Web-App',
         title: 'Strategy Tracker — App',
         description:
@@ -124,6 +151,8 @@ export const translations = {
         url: 'https://strategy-tracker-app.lawley.de',
       },
       {
+        id: 'budget-insights',
+        link: 'open' as const,
         tag: 'Finanz-Dashboard',
         title: 'Budget Insights',
         description:
@@ -132,6 +161,8 @@ export const translations = {
         url: 'https://budget-insights.lawley.de',
       },
       {
+        id: 'immo',
+        link: 'open' as const,
         tag: 'KI-Tool',
         title: 'Immo',
         description:
@@ -140,6 +171,8 @@ export const translations = {
         url: 'https://immo-expose.lawley.de',
       },
       {
+        id: 'meeting-rater',
+        link: 'open' as const,
         tag: 'Feedback-Tool',
         title: 'Meeting Rater',
         description:

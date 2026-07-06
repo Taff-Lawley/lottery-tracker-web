@@ -1,0 +1,32 @@
+---
+import type { Screenshot } from '../i18n';
+
+interface Props {
+  tag: string;
+  title: string;
+  description: string;
+  stack: string[];
+  url: string;
+  screenshots: Screenshot[];
+  linkText: string;
+}
+
+const { tag, title, description, stack, url, screenshots, linkText } = Astro.props;
+---
+
+<div class="project-card">
+  <span class="project-tag">{tag}</span>
+  <h3>{title}</h3>
+  <p set:html={description} />
+  <div class="project-stack">
+    {stack.map(s => <span class="stack-pill">{s}</span>)}
+  </div>
+  {screenshots.length > 0 && (
+    <button class="gallery-btn" data-screenshots={JSON.stringify(screenshots)}>
+      Screenshots ({screenshots.length})
+    </button>
+  )}
+  <a href={url} class="project-link" target="_blank" rel="noopener">
+    {linkText}
+  </a>
+</div>

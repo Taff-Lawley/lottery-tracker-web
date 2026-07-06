@@ -1,0 +1,192 @@
+---
+---
+
+<div class="gallery-modal" id="gallery-modal" hidden>
+  <div class="gallery-backdrop" id="gallery-backdrop"></div>
+  <div class="gallery-content">
+    <button class="gallery-close" id="gallery-close" aria-label="Close">×</button>
+    <div class="gallery-stage">
+      <button class="gallery-nav gallery-prev" id="gallery-prev" aria-label="Previous">&#8249;</button>
+      <img class="gallery-img" id="gallery-img" src="" alt="Screenshot" />
+      <button class="gallery-nav gallery-next" id="gallery-next" aria-label="Next">&#8250;</button>
+    </div>
+    <p class="gallery-caption" id="gallery-caption"></p>
+    <div class="gallery-counter" id="gallery-counter"></div>
+  </div>
+</div>
+
+<style is:global>
+  .gallery-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 10px;
+    transition: border-color 0.15s, color 0.15s;
+    font-family: inherit;
+    margin-top: 8px;
+  }
+  .gallery-btn:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+
+  .gallery-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery-modal[hidden] { display: none; }
+
+  .gallery-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+  }
+
+  .gallery-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    max-width: 92vw;
+  }
+
+  .gallery-close {
+    position: absolute;
+    top: -44px;
+    right: -4px;
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    line-height: 1;
+  }
+  .gallery-close:hover { background: rgba(255, 255, 255, 0.25); }
+
+  .gallery-stage {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .gallery-img {
+    max-width: min(80vw, 900px);
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .gallery-nav {
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    line-height: 1;
+  }
+  .gallery-nav:hover { background: rgba(255, 255, 255, 0.25); }
+  .gallery-nav[hidden] { display: none; }
+
+  .gallery-caption {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: min(80vw, 900px);
+  }
+  .gallery-caption:empty { display: none; }
+
+  .gallery-counter {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.8rem;
+  }
+  .gallery-counter[hidden] { display: none; }
+</style>
+
+<script>
+  interface Screenshot { src: string; caption: string; }
+
+  const modal = document.getElementById('gallery-modal') as HTMLElement;
+  const modalImg = document.getElementById('gallery-img') as HTMLImageElement;
+  const caption = document.getElementById('gallery-caption') as HTMLParagraphElement;
+  const counter = document.getElementById('gallery-counter') as HTMLElement;
+  const closeBtn = document.getElementById('gallery-close') as HTMLButtonElement;
+  const prevBtn = document.getElementById('gallery-prev') as HTMLButtonElement;
+  const nextBtn = document.getElementById('gallery-next') as HTMLButtonElement;
+  const backdrop = document.getElementById('gallery-backdrop') as HTMLElement;
+
+  let shots: Screenshot[] = [];
+  let current = 0;
+
+  function show(index: number) {
+    current = index;
+    modalImg.src = shots[current].src;
+    caption.textContent = shots[current].caption;
+    counter.textContent = `${current + 1} / ${shots.length}`;
+    const multi = shots.length > 1;
+    prevBtn.hidden = !multi;
+    nextBtn.hidden = !multi;
+    counter.hidden = !multi;
+  }
+
+  function open(screenshots: Screenshot[]) {
+    shots = screenshots;
+    show(0);
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', close);
+  backdrop.addEventListener('click', close);
+  prevBtn.addEventListener('click', () => show((current - 1 + shots.length) % shots.length));
+  nextBtn.addEventListener('click', () => show((current + 1) % shots.length));
+
+  document.addEventListener('keydown', (e) => {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show((current - 1 + shots.length) % shots.length);
+    if (e.key === 'ArrowRight') show((current + 1) % shots.length);
+  });
+
+  document.querySelectorAll<HTMLButtonElement>('[data-screenshots]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const screenshots: Screenshot[] = JSON.parse(btn.dataset.screenshots!);
+      open(screenshots);
+    });
+  });
+</script>
