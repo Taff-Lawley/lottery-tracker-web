@@ -7,9 +7,10 @@ interface Props {
   url: string;
   screenshots: { src: string; caption: string }[];
   linkText: string;
+  galleryBtn: string;
 }
 
-const { tag, title, description, stack, url, screenshots, linkText } = Astro.props;
+const { tag, title, description, stack, url, screenshots, linkText, galleryBtn } = Astro.props;
 ---
 
 <div class="project-card">
@@ -21,7 +22,7 @@ const { tag, title, description, stack, url, screenshots, linkText } = Astro.pro
   </div>
   {screenshots.length > 0 && (
     <button class="gallery-btn" data-screenshots={JSON.stringify(screenshots)}>
-      Screenshots ({screenshots.length})
+      {galleryBtn}
     </button>
   )}
   <a href={url} class="project-link" target="_blank" rel="noopener">

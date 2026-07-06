@@ -25,6 +25,7 @@ export const translations = {
     nav_contact: 'Contact',
     visit: 'Visit site',
     open: 'Open app',
+    gallery_btn: 'Peek inside',
     contact_h2: 'Get in Touch',
     contact_sub: 'Open to new opportunities. Drop me a message and I\'ll get back to you.',
     contact_name: 'Name',
@@ -72,7 +73,9 @@ export const translations = {
       {
         id: 'immo',
         link: 'open' as const,
-        screenshots: [] as { src: string; caption: string }[],
+        screenshots: [
+          { src: '/images/screenshots/immo-expose-result.png', caption: 'Generated exposé rendered in markdown, with legal hints at the bottom on how to strengthen the listing.' },
+        ],
         tag: 'AI Tool',
         title: 'Immo',
         description:
@@ -116,6 +119,7 @@ export const translations = {
     nav_contact: 'Kontakt',
     visit: 'Zur Website',
     open: 'App öffnen',
+    gallery_btn: 'Einen Blick rein werfen',
     contact_h2: 'Kontakt',
     contact_sub: 'Offen für neue Möglichkeiten. Schreiben Sie mir — ich melde mich zeitnah.',
     contact_name: 'Name',
@@ -163,7 +167,9 @@ export const translations = {
       {
         id: 'immo',
         link: 'open' as const,
-        screenshots: [] as { src: string; caption: string }[],
+        screenshots: [
+          { src: '/images/screenshots/immo-expose-result.png', caption: 'Generiertes Exposé als Markdown-Ausgabe, mit rechtlichen Hinweisen am Ende zur Verbesserung des Inserats.' },
+        ],
         tag: 'KI-Tool',
         title: 'Immo',
         description:
