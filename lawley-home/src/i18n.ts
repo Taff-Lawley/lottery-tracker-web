@@ -1,17 +1,5 @@
 export type Lang = 'en' | 'de';
 
-export interface Screenshot {
-  src: string;
-  caption: string;
-}
-
-export const projectScreenshots: Record<string, Screenshot[]> = {
-  'strategy-tracker-web': [],
-  'strategy-tracker-app': [],
-  'budget-insights': [],
-  'immo': [],
-  'meeting-rater': [],
-};
 
 export const translations = {
   en: {
@@ -49,6 +37,7 @@ export const translations = {
       {
         id: 'strategy-tracker-web',
         link: 'visit' as const,
+        screenshots: [] as { src: string; caption: string }[],
         tag: 'Landing Page',
         title: 'Strategy Tracker — Web',
         description:
@@ -59,6 +48,9 @@ export const translations = {
       {
         id: 'strategy-tracker-app',
         link: 'open' as const,
+        screenshots: [
+          { src: '/images/screenshots/strategy-tracker-app-telegram.png', caption: 'Telegram notifications for draw results and scraper events' },
+        ],
         tag: 'Web App',
         title: 'Strategy Tracker — App',
         description:
@@ -69,6 +61,7 @@ export const translations = {
       {
         id: 'budget-insights',
         link: 'open' as const,
+        screenshots: [] as { src: string; caption: string }[],
         tag: 'Finance Dashboard',
         title: 'Budget Insights',
         description:
@@ -79,6 +72,7 @@ export const translations = {
       {
         id: 'immo',
         link: 'open' as const,
+        screenshots: [] as { src: string; caption: string }[],
         tag: 'AI Tool',
         title: 'Immo',
         description:
@@ -89,6 +83,7 @@ export const translations = {
       {
         id: 'meeting-rater',
         link: 'open' as const,
+        screenshots: [] as { src: string; caption: string }[],
         tag: 'Feedback Tool',
         title: 'Meeting Rater',
         description:
@@ -133,6 +128,7 @@ export const translations = {
       {
         id: 'strategy-tracker-web',
         link: 'visit' as const,
+        screenshots: [] as { src: string; caption: string }[],
         tag: 'Landingpage',
         title: 'Strategy Tracker — Web',
         description:
@@ -143,6 +139,9 @@ export const translations = {
       {
         id: 'strategy-tracker-app',
         link: 'open' as const,
+        screenshots: [
+          { src: '/images/screenshots/strategy-tracker-app-telegram.png', caption: 'Telegram-Benachrichtigungen für Ziehungsergebnisse und Scraper-Events' },
+        ],
         tag: 'Web-App',
         title: 'Strategy Tracker — App',
         description:
@@ -153,6 +152,7 @@ export const translations = {
       {
         id: 'budget-insights',
         link: 'open' as const,
+        screenshots: [] as { src: string; caption: string }[],
         tag: 'Finanz-Dashboard',
         title: 'Budget Insights',
         description:
@@ -163,6 +163,7 @@ export const translations = {
       {
         id: 'immo',
         link: 'open' as const,
+        screenshots: [] as { src: string; caption: string }[],
         tag: 'KI-Tool',
         title: 'Immo',
         description:
@@ -173,6 +174,7 @@ export const translations = {
       {
         id: 'meeting-rater',
         link: 'open' as const,
+        screenshots: [] as { src: string; caption: string }[],
         tag: 'Feedback-Tool',
         title: 'Meeting Rater',
         description:

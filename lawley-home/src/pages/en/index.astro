@@ -1,5 +1,5 @@
 ---
-import { translations, projectScreenshots } from '../../i18n';
+import { translations } from '../../i18n';
 import GalleryModal from '../../components/GalleryModal.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 const t = translations.en;
@@ -111,7 +111,7 @@ const canonical = 'https://lawley.de/en/';
           description={p.description}
           stack={p.stack}
           url={p.url}
-          screenshots={projectScreenshots[p.id] ?? []}
+          screenshots={p.screenshots}
           linkText={t[p.link]}
         />
       ))}

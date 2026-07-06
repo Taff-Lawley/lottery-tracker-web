@@ -1,13 +1,11 @@
 ---
-import type { Screenshot } from '../i18n';
-
 interface Props {
   tag: string;
   title: string;
   description: string;
   stack: string[];
   url: string;
-  screenshots: Screenshot[];
+  screenshots: { src: string; caption: string }[];
   linkText: string;
 }
 
