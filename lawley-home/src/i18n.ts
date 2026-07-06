@@ -49,7 +49,7 @@ export const translations = {
         id: 'strategy-tracker-app',
         link: 'open' as const,
         screenshots: [
-          { src: '/images/screenshots/strategy-tracker-app-telegram.png', caption: 'Telegram notifications for draw results and scraper events' },
+          { src: '/images/screenshots/strategy-tracker-app-telegram.png', caption: 'Telegram notifications for draw results and scraper events — including the ability to re-run a failed scrape directly from the chat.' },
         ],
         tag: 'Web App',
         title: 'Strategy Tracker — App',
@@ -140,7 +140,7 @@ export const translations = {
         id: 'strategy-tracker-app',
         link: 'open' as const,
         screenshots: [
-          { src: '/images/screenshots/strategy-tracker-app-telegram.png', caption: 'Telegram-Benachrichtigungen für Ziehungsergebnisse und Scraper-Events' },
+          { src: '/images/screenshots/strategy-tracker-app-telegram.png', caption: 'Telegram-Benachrichtigungen für Ziehungsergebnisse und Scraper-Events — inklusive der Möglichkeit, einen fehlgeschlagenen Scraper-Lauf direkt aus dem Chat heraus neu zu starten.' },
         ],
         tag: 'Web-App',
         title: 'Strategy Tracker — App',
