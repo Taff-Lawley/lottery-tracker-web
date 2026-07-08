@@ -53,6 +53,10 @@ export const translations = {
         link: 'open' as const,
         screenshots: [
           { src: '/images/screenshots/strategy-tracker-app-telegram.png', caption: 'Telegram notifications for draw results and scraper events — including the ability to re-run a failed scrape directly from the chat.' },
+          { src: '/images/screenshots/strategy-tracker-app-my-tickets.png', caption: 'My Tickets — track your entries across draws with colour-coded number balls and match results at a glance.' },
+          { src: '/images/screenshots/strategy-tracker-app-birthday-numbers.png', caption: 'Birthday Numbers analysis — shows how often draws fall entirely within 1–31 and the full distribution, so you can see why birthday picks are a crowd trap.' },
+          { src: '/images/screenshots/strategy-tracker-app-ticket-generation.png', caption: 'Ticket generation — choose from cold-number, high-weight, or balanced strategies, each backed by a draw-history histogram.' },
+          { src: '/images/screenshots/strategy-tracker-app-method-overview.png', caption: 'Method overview — compare all 15 strategies side by side: draws tracked, best result, average match %, and hit rate ≥3.' },
         ],
         tag: 'Web App',
         title: 'Strategy Tracker — App',
@@ -149,6 +153,10 @@ export const translations = {
         link: 'open' as const,
         screenshots: [
           { src: '/images/screenshots/strategy-tracker-app-telegram.png', caption: 'Telegram-Benachrichtigungen für Ziehungsergebnisse und Scraper-Events — inklusive der Möglichkeit, einen fehlgeschlagenen Scraper-Lauf direkt aus dem Chat heraus neu zu starten.' },
+          { src: '/images/screenshots/strategy-tracker-app-my-tickets.png', caption: 'Meine Scheine — Einträge über mehrere Ziehungen hinweg verfolgen, mit farbigen Zahlenkugeln und Trefferergebnissen auf einen Blick.' },
+          { src: '/images/screenshots/strategy-tracker-app-birthday-numbers.png', caption: 'Geburtstagszahlen-Analyse — zeigt, wie oft alle Zahlen in den Bereich 1–31 fallen, inklusive vollständiger Verteilung. Ideal, um zu sehen, warum Geburtstagstippen statistisch ungünstig ist.' },
+          { src: '/images/screenshots/strategy-tracker-app-ticket-generation.png', caption: 'Scheingenerierung — Kälte-Auswahl, Hohe Gewichtung oder Ausgeglichene Strategie, jeweils mit Histogramm auf Basis der Ziehungshistorie.' },
+          { src: '/images/screenshots/strategy-tracker-app-method-overview.png', caption: 'Methodenübersicht — alle 15 Strategien im Vergleich: Ziehungen, bestes Ergebnis, Durchschnitts-Trefferquote und Treffer% (≥3).' },
         ],
         tag: 'Web-App',
         title: 'Strategy Tracker — App',
