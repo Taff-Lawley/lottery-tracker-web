@@ -7,7 +7,10 @@
     <button class="gallery-close" id="gallery-close" aria-label="Close">×</button>
     <div class="gallery-stage">
       <button class="gallery-nav gallery-prev" id="gallery-prev" aria-label="Previous">&#8249;</button>
-      <img class="gallery-img" id="gallery-img" src="" alt="Screenshot" />
+      <picture id="gallery-picture">
+        <source id="gallery-source" type="image/webp" />
+        <img class="gallery-img" id="gallery-img" src="" alt="Screenshot" />
+      </picture>
       <button class="gallery-nav gallery-next" id="gallery-next" aria-label="Next">&#8250;</button>
     </div>
     <p class="gallery-caption" id="gallery-caption"></p>
@@ -150,6 +153,7 @@
   interface Screenshot { src: string; caption: string; }
 
   const modal = document.getElementById('gallery-modal') as HTMLElement;
+  const modalSource = document.getElementById('gallery-source') as HTMLSourceElement;
   const modalImg = document.getElementById('gallery-img') as HTMLImageElement;
   const caption = document.getElementById('gallery-caption') as HTMLParagraphElement;
   const counter = document.getElementById('gallery-counter') as HTMLElement;
@@ -170,6 +174,7 @@
     setZoom(false);
     current = index;
     modalImg.src = shots[current].src;
+    modalSource.srcset = shots[current].src.replace(/\.\w+$/, '.webp');
     caption.textContent = shots[current].caption;
     counter.textContent = `${current + 1} / ${shots.length}`;
     const multi = shots.length > 1;
@@ -191,7 +196,7 @@
     document.body.style.overflow = '';
   }
 
-  modalImg.addEventListener('click', () => {
+  document.getElementById('gallery-picture')!.addEventListener('click', () => {
     setZoom(!modalImg.classList.contains('gallery-img--zoomed'));
   });
 
