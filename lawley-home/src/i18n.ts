@@ -68,7 +68,9 @@ export const translations = {
       {
         id: 'budget-insights',
         link: 'open' as const,
-        screenshots: [] as { src: string; caption: string }[],
+        screenshots: [
+          { src: '/images/screenshots/budget-insights-dashboard.png', caption: 'Dashboard overview — current balance, income, expenses, and savings at a glance, with spending by category and an AI insights panel.' },
+        ],
         tag: 'Finance Dashboard',
         title: 'Budget Insights',
         description:
@@ -168,7 +170,9 @@ export const translations = {
       {
         id: 'budget-insights',
         link: 'open' as const,
-        screenshots: [] as { src: string; caption: string }[],
+        screenshots: [
+          { src: '/images/screenshots/budget-insights-dashboard.png', caption: 'Dashboard-Übersicht — Kontostand, Einkommen, Ausgaben und Ersparnisse auf einen Blick, mit Ausgaben nach Kategorie und einem KI-Insights-Panel.' },
+        ],
         tag: 'Finanz-Dashboard',
         title: 'Budget Insights',
         description:
