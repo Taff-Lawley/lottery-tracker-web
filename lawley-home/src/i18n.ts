@@ -94,7 +94,14 @@ export const translations = {
       {
         id: 'meeting-rater',
         link: 'open' as const,
-        screenshots: [] as { src: string; caption: string }[],
+        screenshots: [
+          { src: '/images/screenshots/meeting-rater-create-meeting.png', caption: 'Name your meeting and set how many attendees to expect.' },
+          { src: '/images/screenshots/meeting-rater-share-link.png', caption: 'One link to share — participants rate anonymously from any device.' },
+          { src: '/images/screenshots/meeting-rater-star-rating.png', caption: 'Step 1: honest star rating with plain-English labels from Painful to Exceptional.' },
+          { src: '/images/screenshots/meeting-rater-meeting-type.png', caption: 'Step 2: pick the label that best describes the meeting.' },
+          { src: '/images/screenshots/meeting-rater-text-feedback.png', caption: 'Step 3: one thing that would\'ve made it better — submitted anonymously.' },
+          { src: '/images/screenshots/meeting-rater-results-dashboard.png', caption: 'Live results: star score, category breakdown, and what participants said.' },
+        ],
         tag: 'Feedback Tool',
         title: 'Meeting Rater',
         description:
@@ -196,7 +203,14 @@ export const translations = {
       {
         id: 'meeting-rater',
         link: 'open' as const,
-        screenshots: [] as { src: string; caption: string }[],
+        screenshots: [
+          { src: '/images/screenshots/meeting-rater-create-meeting.png', caption: 'Meeting erstellen — Name und erwartete Teilnehmerzahl festlegen.' },
+          { src: '/images/screenshots/meeting-rater-share-link.png', caption: 'Ein Link zum Teilen — Teilnehmer bewerten anonym von jedem Gerät aus.' },
+          { src: '/images/screenshots/meeting-rater-star-rating.png', caption: 'Schritt 1: ehrliche Sternebewertung mit verständlichen Labels von Schmerzhaft bis Ausgezeichnet.' },
+          { src: '/images/screenshots/meeting-rater-meeting-type.png', caption: 'Schritt 2: das Label wählen, das das Meeting am besten beschreibt.' },
+          { src: '/images/screenshots/meeting-rater-text-feedback.png', caption: 'Schritt 3: eine Sache, die es besser gemacht hätte — anonym eingereicht.' },
+          { src: '/images/screenshots/meeting-rater-results-dashboard.png', caption: 'Live-Ergebnisse: Sternebewertung, Kategorienaufschlüsselung und was Teilnehmer gesagt haben.' },
+        ],
         tag: 'Feedback-Tool',
         title: 'Meeting Rater',
         description:
