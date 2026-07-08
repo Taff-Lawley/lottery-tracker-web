@@ -38,7 +38,9 @@ export const translations = {
       {
         id: 'strategy-tracker-web',
         link: 'visit' as const,
-        screenshots: [] as { src: string; caption: string }[],
+        screenshots: [
+          { src: '/images/screenshots/strategy-tracker-web-landing.png', caption: 'The Strategy Tracker landing page — feature overview, supported lotteries, and App Store download.' },
+        ],
         tag: 'Landing Page',
         title: 'Strategy Tracker — Web',
         description:
@@ -132,7 +134,9 @@ export const translations = {
       {
         id: 'strategy-tracker-web',
         link: 'visit' as const,
-        screenshots: [] as { src: string; caption: string }[],
+        screenshots: [
+          { src: '/images/screenshots/strategy-tracker-web-landing.png', caption: 'Die Strategy Tracker Landingpage — Funktionsübersicht, unterstützte Lotterien und App-Store-Download.' },
+        ],
         tag: 'Landingpage',
         title: 'Strategy Tracker — Web',
         description:
