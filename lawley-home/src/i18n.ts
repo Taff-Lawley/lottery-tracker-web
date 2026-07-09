@@ -92,6 +92,24 @@ export const translations = {
         url: 'https://immo-expose.lawley.de',
       },
       {
+        id: 'jobfit-ai',
+        link: 'open' as const,
+        screenshots: [
+          { src: '/images/screenshots/jobfit-ai-upload-form.png', caption: 'Upload form — CV (PDF), optional existing cover letter, job posting URL, and an additional context field for anything not on your CV.' },
+          { src: '/images/screenshots/jobfit-ai-match-score.png', caption: 'Match score — Claude rates the fit as a percentage and lists concrete strengths drawn from your CV against the job requirements.' },
+          { src: '/images/screenshots/jobfit-ai-gaps.png', caption: 'Gaps — specific skills and qualifications missing from your CV that the job posting explicitly requires.' },
+          { src: '/images/screenshots/jobfit-ai-ats-keywords.png', caption: 'ATS keywords — all terms from the job posting that an applicant tracking system is likely to scan for, ready to drop into your CV.' },
+          { src: '/images/screenshots/jobfit-ai-cover-letter.png', caption: 'Cover letter — fully tailored draft (or adaptation of your existing one), referencing the specific role and matching your experience to the job.' },
+          { src: '/images/screenshots/jobfit-ai-interview-questions.png', caption: 'Likely interview questions — predicted based on the gap between your CV and the role, so you can prepare targeted answers.' },
+        ],
+        tag: 'AI Tool',
+        title: 'JobFit AI',
+        description:
+          'AI-powered CV and job posting analyser for German-speaking job seekers. Upload your CV and paste a job URL — Claude returns a match score, strengths, gaps, ATS keywords, a tailored cover letter, and likely interview questions. Optional existing cover letter upload for Claude to adapt instead of writing from scratch.',
+        stack: ['Vue 3', 'Node.js', 'Express', 'Claude AI', 'SQLite', 'Fly.io', 'GitHub Actions'],
+        url: 'https://jobfit.lawley.de',
+      },
+      {
         id: 'meeting-rater',
         link: 'open' as const,
         screenshots: [
@@ -199,6 +217,24 @@ export const translations = {
           'KI-gestützter Exposé-Generator für deutsche Immobilienmakler. Immobiliendaten eingeben und in Sekunden eine polierte, professionelle Angebotsbeschreibung erhalten – live via Claude gestreamt. <strong>Für API-Zugang gerne kontaktieren.</strong>',
         stack: ['Vue 3', 'Python', 'FastAPI', 'Claude AI', 'Docker', 'Fly.io', 'GitHub Actions'],
         url: 'https://immo-expose.lawley.de',
+      },
+      {
+        id: 'jobfit-ai',
+        link: 'open' as const,
+        screenshots: [
+          { src: '/images/screenshots/jobfit-ai-upload-form.png', caption: 'Upload-Formular — Lebenslauf (PDF), optionales Anschreiben, Stellen-URL und ein Zusatzfeld für alles, was nicht im Lebenslauf steht.' },
+          { src: '/images/screenshots/jobfit-ai-match-score.png', caption: 'Match-Score — Claude bewertet die Passung in Prozent und listet konkrete Stärken aus dem Lebenslauf bezogen auf die Anforderungen.' },
+          { src: '/images/screenshots/jobfit-ai-gaps.png', caption: 'Lücken — spezifische Fähigkeiten und Qualifikationen, die im Lebenslauf fehlen, aber von der Stelle explizit gefordert werden.' },
+          { src: '/images/screenshots/jobfit-ai-ats-keywords.png', caption: 'ATS-Schlüsselwörter — alle Begriffe aus der Stellenanzeige, nach denen ein Bewerbermanagementsystem wahrscheinlich sucht, direkt in den Lebenslauf übertragbar.' },
+          { src: '/images/screenshots/jobfit-ai-cover-letter.png', caption: 'Anschreiben — vollständig auf die Stelle zugeschnittener Entwurf (oder Anpassung des eigenen), mit Bezug auf die konkrete Rolle und die passenden Erfahrungen.' },
+          { src: '/images/screenshots/jobfit-ai-interview-questions.png', caption: 'Mögliche Interviewfragen — auf Basis der Lücken zwischen Lebenslauf und Stelle vorhergesagt, um gezielte Antworten vorzubereiten.' },
+        ],
+        tag: 'KI-Tool',
+        title: 'JobFit AI',
+        description:
+          'KI-gestützter Lebenslauf- und Stellenanzeigen-Analyser für deutschsprachige Jobsuchende. Lebenslauf hochladen und Stellen-URL einfügen — Claude liefert einen Match-Score, Stärken, Lücken, ATS-Keywords, ein maßgeschneidertes Anschreiben und wahrscheinliche Interview-Fragen. Optional eigenes Anschreiben hochladen, das Claude anpasst statt von vorne zu beginnen.',
+        stack: ['Vue 3', 'Node.js', 'Express', 'Claude AI', 'SQLite', 'Fly.io', 'GitHub Actions'],
+        url: 'https://jobfit.lawley.de',
       },
       {
         id: 'meeting-rater',
