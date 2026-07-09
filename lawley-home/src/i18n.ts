@@ -105,7 +105,7 @@ export const translations = {
         tag: 'AI Tool',
         title: 'JobFit AI',
         description:
-          'AI-powered CV and job posting analyser for German-speaking job seekers. Upload your CV and paste a job URL — Claude returns a match score, strengths, gaps, ATS keywords, a tailored cover letter, and likely interview questions. Optional existing cover letter upload for Claude to adapt instead of writing from scratch.',
+          'AI-powered CV and job posting analyser for German-speaking job seekers. Upload your CV and paste a job URL — Claude returns a match score, strengths, gaps, ATS keywords, a tailored cover letter, and likely interview questions. Optional existing cover letter upload for Claude to adapt instead of writing from scratch. <strong>Contact me for API access.</strong>',
         stack: ['Vue 3', 'Node.js', 'Express', 'Claude AI', 'SQLite', 'Fly.io', 'GitHub Actions'],
         url: 'https://jobfit.lawley.de',
       },
@@ -232,7 +232,7 @@ export const translations = {
         tag: 'KI-Tool',
         title: 'JobFit AI',
         description:
-          'KI-gestützter Lebenslauf- und Stellenanzeigen-Analyser für deutschsprachige Jobsuchende. Lebenslauf hochladen und Stellen-URL einfügen — Claude liefert einen Match-Score, Stärken, Lücken, ATS-Keywords, ein maßgeschneidertes Anschreiben und wahrscheinliche Interview-Fragen. Optional eigenes Anschreiben hochladen, das Claude anpasst statt von vorne zu beginnen.',
+          'KI-gestützter Lebenslauf- und Stellenanzeigen-Analyser für deutschsprachige Jobsuchende. Lebenslauf hochladen und Stellen-URL einfügen — Claude liefert einen Match-Score, Stärken, Lücken, ATS-Keywords, ein maßgeschneidertes Anschreiben und wahrscheinliche Interview-Fragen. Optional eigenes Anschreiben hochladen, das Claude anpasst statt von vorne zu beginnen. <strong>Für API-Zugang gerne kontaktieren.</strong>',
         stack: ['Vue 3', 'Node.js', 'Express', 'Claude AI', 'SQLite', 'Fly.io', 'GitHub Actions'],
         url: 'https://jobfit.lawley.de',
       },
