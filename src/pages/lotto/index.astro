@@ -1,0 +1,91 @@
+---
+import Layout from '../../components/Layout.astro';
+import { getAllArticles } from '../../lib/articles';
+
+const articles = await getAllArticles('de');
+
+function formatDate(iso: string) {
+  const [y, m, d] = iso.split('-');
+  const months = ['', 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                  'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+  return `${parseInt(d)}. ${months[parseInt(m)]} ${y}`;
+}
+---
+
+<Layout title="Lotto 6aus49 Statistiken – Alle Ziehungen" lang="de" showDownload={false}>
+  <meta slot="head" name="description" content="Statistische Analysen zu allen Ziehungen des Deutschen Lotto 6aus49. Datengetrieben, sachlich, aktuell." />
+
+  <main class="lotto-list">
+    <div class="container">
+      <h1>Lotto 6aus49 – Statistiken &amp; Analysen</h1>
+      <p class="intro">Datengetriebene Analysen zu jeder Ziehung des Deutschen Lotto 6aus49.</p>
+
+      <ul class="article-list">
+        {articles.map(a => (
+          <li class="article-card">
+            <a href={`/lotto/${a.slug}`}>
+              <span class="date">{formatDate(a.draw_date)}</span>
+              <h2>{a.title}</h2>
+              <p class="teaser">{a.meta_description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .lotto-list {
+    padding: 48px 24px 80px;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .intro {
+    color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+  .article-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .article-card a {
+    display: block;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-alt);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .article-card a:hover {
+    border-color: var(--brand-light);
+    box-shadow: 0 2px 12px rgba(91,33,182,0.08);
+  }
+  .date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brand-light);
+  }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 6px 0 8px;
+    color: var(--text);
+  }
+  .teaser {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+</style>

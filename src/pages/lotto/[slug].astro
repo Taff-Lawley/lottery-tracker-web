@@ -1,0 +1,80 @@
+---
+import Layout from '../../components/Layout.astro';
+import { getAllArticles, getArticleBySlug } from '../../lib/articles';
+
+export async function getStaticPaths() {
+  const articles = await getAllArticles('de');
+  return articles.map(a => ({ params: { slug: a.slug } }));
+}
+
+const { slug } = Astro.params;
+const article = await getArticleBySlug(slug, 'de');
+
+if (!article) return Astro.redirect('/lotto');
+
+function formatDate(iso: string) {
+  const [y, m, d] = iso.split('-');
+  const months = ['', 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                  'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+  return `${parseInt(d)}. ${months[parseInt(m)]} ${y}`;
+}
+
+const paragraphs = article.content.split(/\n\n+/).filter(Boolean);
+---
+
+<Layout title={article.title} lang="de" showDownload={false}>
+  <meta slot="head" name="description" content={article.meta_description} />
+
+  <main class="lotto-article">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/lotto">← Alle Ziehungen</a>
+      </nav>
+
+      <span class="date">{formatDate(article.draw_date)}</span>
+      <h1>{article.title}</h1>
+
+      <article class="content">
+        {paragraphs.map(p => <p>{p}</p>)}
+      </article>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .lotto-article {
+    padding: 48px 24px 80px;
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .breadcrumb {
+    margin-bottom: 24px;
+    font-size: 0.85rem;
+  }
+  .breadcrumb a {
+    color: var(--brand-light);
+  }
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  .date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brand-light);
+  }
+  h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin: 8px 0 32px;
+    line-height: 1.3;
+  }
+  .content p {
+    margin-bottom: 1.2em;
+    line-height: 1.75;
+    color: var(--text);
+  }
+</style>
