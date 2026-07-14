@@ -42,7 +42,7 @@ export const translations: Record<string, Record<string, string>> = {
     download_cta: 'Download on the App Store',
     try_web: 'Or try the web version →',
     footer_tagline: 'Lottery statistics for informed players.',
-    footer_copy: '© 2026 Strategy Tracker. All rights reserved.',
+    footer_copy: '© 2026 Adrian Lawley. All rights reserved.',
   },
   de: {
     nav_home: 'Start',
@@ -81,7 +81,7 @@ export const translations: Record<string, Record<string, string>> = {
     download_cta: 'Im App Store laden',
     try_web: 'Oder die Web-Version ausprobieren →',
     footer_tagline: 'Lotto-Statistiken für informierte Spieler.',
-    footer_copy: '© 2026 Strategy Tracker. Alle Rechte vorbehalten.',
+    footer_copy: '© 2026 Adrian Lawley. Alle Rechte vorbehalten.',
   },
   fr: {
     nav_home: 'Accueil',
@@ -120,6 +120,6 @@ export const translations: Record<string, Record<string, string>> = {
     download_cta: 'Télécharger sur l\'App Store',
     try_web: 'Ou essayer la version web →',
     footer_tagline: 'Statistiques de loterie pour les joueurs informés.',
-    footer_copy: '© 2026 Strategy Tracker. Tous droits réservés.',
+    footer_copy: '© 2026 Adrian Lawley. Tous droits réservés.',
   },
 };

@@ -7,9 +7,10 @@ interface Props {
   lang?: 'en' | 'de' | 'fr';
   noindex?: boolean;
   showDownload?: boolean;
+  showLangSwitcher?: boolean;
 }
 
-const { title, lang = 'en', noindex = false, showDownload = true } = Astro.props;
+const { title, lang = 'en', noindex = false, showDownload = true, showLangSwitcher = true } = Astro.props;
 const t = translations[lang];
 
 const langPaths: Record<string, string> = { en: '/', de: '/de/', fr: '/fr/' };
@@ -40,12 +41,15 @@ const home = langPaths[lang];
       <li><a href={`${home}#features`}>{t.nav_features}</a></li>
       <li><a href={`${home}#download`}>{t.nav_download}</a></li>
       <li><a href={faqPaths[lang]}>{t.nav_faq}</a></li>
+      <li><a href="/lotto">Lotto 6aus49</a></li>
     </ul>
-    <select class="lang-select" id="lang-switcher" aria-label="Language">
-      <option value="en" selected={lang === 'en'}>English</option>
-      <option value="de" selected={lang === 'de'}>Deutsch</option>
-      <option value="fr" selected={lang === 'fr'}>Français</option>
-    </select>
+    {showLangSwitcher && (
+      <select class="lang-select" id="lang-switcher" aria-label="Language">
+        <option value="en" selected={lang === 'en'}>English</option>
+        <option value="de" selected={lang === 'de'}>Deutsch</option>
+        <option value="fr" selected={lang === 'fr'}>Français</option>
+      </select>
+    )}
   </div>
 </nav>
 
@@ -54,15 +58,17 @@ const home = langPaths[lang];
 {showDownload && <DownloadSection lang={lang} />}
 
 <footer>
-  <strong>Strategy Tracker</strong>
-  <p>{t.footer_tagline}</p>
-  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap">
-    <a href={home} style="color:rgba(255,255,255,0.6);font-size:0.85rem">{t.nav_home}</a>
-    <a href={faqPaths[lang]} style="color:rgba(255,255,255,0.6);font-size:0.85rem">FAQ</a>
-    <a href={`${home}privacy`} style="color:rgba(255,255,255,0.6);font-size:0.85rem">{lang === 'de' ? 'Datenschutz' : lang === 'fr' ? 'Confidentialité' : 'Privacy'}</a>
-    <a href={`${home}legal`} style="color:rgba(255,255,255,0.6);font-size:0.85rem">{lang === 'de' ? 'Impressum' : lang === 'fr' ? 'Mentions légales' : 'Legal'}</a>
+  <div class="footer-inner">
+    <strong>Strategy Tracker</strong>
+    <p>{t.footer_tagline}</p>
+    <div class="footer-links">
+      <a href={home}>{t.nav_home}</a>
+      <a href={faqPaths[lang]}>FAQ</a>
+      <a href={`${home}privacy`}>{lang === 'de' ? 'Datenschutz' : lang === 'fr' ? 'Confidentialité' : 'Privacy'}</a>
+      <a href={`${home}legal`}>{lang === 'de' ? 'Impressum' : lang === 'fr' ? 'Mentions légales' : 'Legal'}</a>
+    </div>
+    <p class="footer-copy">&copy; {new Date().getFullYear()} Adrian Lawley. {lang === 'de' ? 'Alle Rechte vorbehalten.' : lang === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}</p>
   </div>
-  <p style="margin-top:8px">{t.footer_copy}</p>
 </footer>
 
 <script define:vars={{ langPaths, faqPaths }}>

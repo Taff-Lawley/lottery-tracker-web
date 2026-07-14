@@ -194,9 +194,11 @@ const faqPaths: Record<string, string> = { en: '/faq', de: '/de/faq', fr: '/fr/f
 
 <!-- FOOTER -->
 <footer>
-  <strong>Strategy Tracker</strong>
-  <p>{t.footer_tagline}</p>
-  <p style="margin-top:8px">{t.footer_copy}</p>
+  <div class="footer-inner">
+    <strong>Strategy Tracker</strong>
+    <p>{t.footer_tagline}</p>
+    <p class="footer-copy">{t.footer_copy}</p>
+  </div>
 </footer>
 
 <script define:vars={{ langPaths }}>
