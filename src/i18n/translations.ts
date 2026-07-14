@@ -43,6 +43,10 @@ export const translations: Record<string, Record<string, string>> = {
     try_web: 'Or try the web version →',
     footer_tagline: 'Lottery statistics for informed players.',
     footer_copy: '© 2026 Adrian Lawley. All rights reserved.',
+    cookie_text: 'We use Google Analytics to understand how our site is used. Your IP is anonymised. See our',
+    cookie_privacy: 'Privacy Policy',
+    cookie_accept: 'Accept',
+    cookie_decline: 'Decline',
   },
   de: {
     nav_home: 'Start',
@@ -82,6 +86,10 @@ export const translations: Record<string, Record<string, string>> = {
     try_web: 'Oder die Web-Version ausprobieren →',
     footer_tagline: 'Lotto-Statistiken für informierte Spieler.',
     footer_copy: '© 2026 Adrian Lawley. Alle Rechte vorbehalten.',
+    cookie_text: 'Wir nutzen Google Analytics, um die Nutzung unserer Website zu analysieren. Ihre IP-Adresse wird anonymisiert. Mehr dazu in unserer',
+    cookie_privacy: 'Datenschutzerklärung',
+    cookie_accept: 'Akzeptieren',
+    cookie_decline: 'Ablehnen',
   },
   fr: {
     nav_home: 'Accueil',
@@ -121,5 +129,9 @@ export const translations: Record<string, Record<string, string>> = {
     try_web: 'Ou essayer la version web →',
     footer_tagline: 'Statistiques de loterie pour les joueurs informés.',
     footer_copy: '© 2026 Adrian Lawley. Tous droits réservés.',
+    cookie_text: 'Nous utilisons Google Analytics pour comprendre comment notre site est utilisé. Votre IP est anonymisée. Voir notre',
+    cookie_privacy: 'Politique de confidentialité',
+    cookie_accept: 'Accepter',
+    cookie_decline: 'Refuser',
   },
 };

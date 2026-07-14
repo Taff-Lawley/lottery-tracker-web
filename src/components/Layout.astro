@@ -29,6 +29,23 @@ const home = langPaths[lang];
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="stylesheet" href="/styles/global.css" />
   <slot name="head" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args: unknown[]){ (window as any).dataLayer.push(args); }
+    (window as any).gtag = gtag;
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500,
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9JEKEP5J11"></script>
+  <script>
+    (window as any).gtag('js', new Date());
+    (window as any).gtag('config', 'G-9JEKEP5J11');
+  </script>
 </head>
 <body>
 
@@ -78,6 +95,36 @@ const home = langPaths[lang];
     const isFaq = path.includes('faq');
     window.location.href = isFaq ? faqPaths[sel.value] : langPaths[sel.value];
   });
+</script>
+
+<div id="cookie-banner" style="display:none">
+  <div class="cookie-inner">
+    <p>{t.cookie_text} <a href={`${home}privacy`}>{t.cookie_privacy}</a>.</p>
+    <div class="cookie-buttons">
+      <button class="cookie-btn cookie-btn-accept" id="cookie-accept">{t.cookie_accept}</button>
+      <button class="cookie-btn cookie-btn-decline" id="cookie-decline">{t.cookie_decline}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const consent = localStorage.getItem('cookie_consent');
+    if (consent === 'granted') {
+      (window as any).gtag('consent', 'update', { analytics_storage: 'granted' });
+    } else if (!consent) {
+      document.getElementById('cookie-banner')!.style.display = 'block';
+    }
+    document.getElementById('cookie-accept')?.addEventListener('click', () => {
+      localStorage.setItem('cookie_consent', 'granted');
+      (window as any).gtag('consent', 'update', { analytics_storage: 'granted' });
+      document.getElementById('cookie-banner')!.style.display = 'none';
+    });
+    document.getElementById('cookie-decline')?.addEventListener('click', () => {
+      localStorage.setItem('cookie_consent', 'denied');
+      document.getElementById('cookie-banner')!.style.display = 'none';
+    });
+  })();
 </script>
 
 </body>

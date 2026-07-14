@@ -4,27 +4,52 @@ import { getAllArticles } from '../../lib/articles';
 
 const articles = await getAllArticles('de');
 
+const BASE = 'https://strategy-tracker.lawley.de';
+const canonicalUrl = `${BASE}/lotto`;
+const description = 'Statistische Analysen zu allen Ziehungen des Deutschen Lotto 6aus49. Datengetrieben, sachlich, aktuell.';
+
 function formatDate(iso: string) {
   const [y, m, d] = iso.split('-');
   const months = ['', 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
                   'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
   return `${parseInt(d)}. ${months[parseInt(m)]} ${y}`;
 }
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Lotto 6aus49 Statistiken – Alle Ziehungen',
+  description,
+  url: canonicalUrl,
+  inLanguage: 'de',
+  publisher: { '@type': 'Organization', name: 'Strategy Tracker', url: BASE },
+};
 ---
 
-<Layout title="Lotto 6aus49 Statistiken – Alle Ziehungen" lang="de" showDownload={false}>
-  <meta slot="head" name="description" content="Statistische Analysen zu allen Ziehungen des Deutschen Lotto 6aus49. Datengetrieben, sachlich, aktuell." />
+<Layout title="Lotto 6aus49 Statistiken – Alle Ziehungen" lang="de" showDownload={false} showLangSwitcher={false}>
+  <link slot="head" rel="canonical" href={canonicalUrl} />
+  <meta slot="head" name="description" content={description} />
+  <meta slot="head" property="og:type" content="website" />
+  <meta slot="head" property="og:title" content="Lotto 6aus49 Statistiken – Alle Ziehungen" />
+  <meta slot="head" property="og:description" content={description} />
+  <meta slot="head" property="og:url" content={canonicalUrl} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-  <main class="lotto-list">
-    <div class="container">
-      <h1>Lotto 6aus49 – Statistiken &amp; Analysen</h1>
+  <header class="list-hero">
+    <div class="list-hero-inner">
+      <span class="eyebrow">Statistiken &amp; Analysen</span>
+      <h1>Lotto 6aus49 – Alle Ziehungen</h1>
       <p class="intro">Datengetriebene Analysen zu jeder Ziehung des Deutschen Lotto 6aus49.</p>
+    </div>
+  </header>
 
+  <main class="list-main">
+    <div class="list-container">
       <ul class="article-list">
         {articles.map(a => (
-          <li class="article-card">
-            <a href={`/lotto/${a.slug}`}>
-              <span class="date">{formatDate(a.draw_date)}</span>
+          <li>
+            <a href={`/lotto/${a.slug}`} class="article-card">
+              <time datetime={a.draw_date} class="date">{formatDate(a.draw_date)}</time>
               <h2>{a.title}</h2>
               <p class="teaser">{a.meta_description}</p>
             </a>
@@ -36,21 +61,46 @@ function formatDate(iso: string) {
 </Layout>
 
 <style>
-  .lotto-list {
-    padding: 48px 24px 80px;
+  .list-hero {
+    background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 60%, var(--brand-light) 100%);
+    color: white;
+    padding: 64px 24px 72px;
+    text-align: center;
   }
-  .container {
+  .list-hero-inner {
     max-width: 760px;
     margin: 0 auto;
   }
+  .eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+    padding: 4px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
   h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
   }
   .intro {
-    color: var(--text-muted);
-    margin-bottom: 40px;
+    font-size: 1.05rem;
+    opacity: 0.85;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .list-main {
+    padding: 48px 24px 80px;
+  }
+  .list-container {
+    max-width: 760px;
+    margin: 0 auto;
   }
   .article-list {
     list-style: none;
@@ -58,30 +108,34 @@ function formatDate(iso: string) {
     flex-direction: column;
     gap: 16px;
   }
-  .article-card a {
+  .article-card {
     display: block;
     padding: 24px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--bg-alt);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   }
-  .article-card a:hover {
+  .article-card:hover {
     border-color: var(--brand-light);
-    box-shadow: 0 2px 12px rgba(91,33,182,0.08);
+    box-shadow: 0 4px 20px rgba(91,33,182,0.1);
+    transform: translateY(-1px);
   }
   .date {
-    font-size: 0.8rem;
+    display: block;
+    font-size: 0.78rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     color: var(--brand-light);
+    margin-bottom: 6px;
   }
   h2 {
     font-size: 1.1rem;
-    font-weight: 600;
-    margin: 6px 0 8px;
+    font-weight: 700;
     color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.35;
   }
   .teaser {
     font-size: 0.9rem;
