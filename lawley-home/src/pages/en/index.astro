@@ -84,6 +84,11 @@ const canonical = 'https://lawley.de/en/';
     <button class="read-more-btn" id="read-more-btn" data-more={t.read_more} data-less={t.read_less}>
       {t.read_more}
     </button>
+    <div class="cv-downloads" id="cv-downloads" hidden>
+      <span class="cv-label">{t.cv_label}</span>
+      <a href="/cv/Adrian_Lawley_CV_English.pdf" download class="cv-link">{t.cv_en} ↓</a>
+      <a href="/cv/Adrian_Lawley_Lebenslauf.pdf" download class="cv-link">{t.cv_de} ↓</a>
+    </div>
   </div>
 </section>
 
@@ -95,6 +100,10 @@ const canonical = 'https://lawley.de/en/';
     more.hidden = expanded;
     btn.textContent = expanded ? btn.dataset.more! : btn.dataset.less!;
   });
+
+  if (new URLSearchParams(window.location.search).has('show_cv')) {
+    (document.getElementById('cv-downloads') as HTMLElement).hidden = false;
+  }
 </script>
 
 <section class="projects" id="projects">

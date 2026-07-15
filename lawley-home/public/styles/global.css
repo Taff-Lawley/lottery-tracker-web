@@ -179,6 +179,36 @@ nav {
 }
 .read-more-btn:hover { color: var(--brand-light); }
 
+.cv-downloads {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.cv-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.cv-link {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand);
+  border: 1.5px solid var(--brand);
+  border-radius: 6px;
+  padding: 5px 14px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cv-link:hover {
+  background: var(--brand);
+  color: white;
+}
+
 /* PROJECTS */
 .projects {
   padding: 80px 24px;
