@@ -1,5 +1,6 @@
 import Database from 'better-sqlite3';
 import path from 'path';
+import { existsSync } from 'fs';
 
 export interface Article {
   id: number;
@@ -21,11 +22,13 @@ const FIELDS = 'id, lottery_code, title, slug, meta_description, content, draw_d
 function sqliteOpen() {
   const dbPath = process.env.LOCAL_DB_PATH
     ?? path.resolve(process.cwd(), '../../lottery-seo/local_test.db');
+  if (!existsSync(dbPath)) return null;
   return new Database(dbPath, { readonly: true });
 }
 
 function sqliteAll(lotteryCode: string): Article[] {
   const db = sqliteOpen();
+  if (!db) return [];
   const rows = db.prepare(
     `SELECT ${FIELDS} FROM articles WHERE lottery_code = ? ORDER BY draw_date DESC`
   ).all(lotteryCode) as Article[];
@@ -35,6 +38,7 @@ function sqliteAll(lotteryCode: string): Article[] {
 
 function sqliteBySlug(slug: string, lotteryCode: string): Article | undefined {
   const db = sqliteOpen();
+  if (!db) return undefined;
   const row = db.prepare(
     `SELECT ${FIELDS} FROM articles WHERE lottery_code = ? AND slug = ?`
   ).get(lotteryCode, slug) as Article | undefined;
