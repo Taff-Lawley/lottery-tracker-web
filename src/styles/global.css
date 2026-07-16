@@ -159,6 +159,17 @@ nav {
 }
 .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
+.hero-stats-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.hero-stats-link:hover { color: rgba(255,255,255,0.9); }
+
 /* MOCK SCREENSHOT */
 .hero-image {
   max-width: 860px;
@@ -402,6 +413,9 @@ footer p { margin-bottom: 8px; }
 
 .footer-links a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
 .footer-links a:hover { color: white; }
+.footer-stats-link { margin-bottom: 12px; }
+.footer-stats-link a { color: rgba(255,255,255,0.55); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; font-size: 0.85rem; }
+.footer-stats-link a:hover { color: white; }
 .footer-copy { margin-top: 8px; font-size: 0.78rem; opacity: 0.45; }
 
 /* COOKIE BANNER */

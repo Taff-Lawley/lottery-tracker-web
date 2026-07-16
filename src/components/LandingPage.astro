@@ -21,6 +21,12 @@ const descriptions: Record<string, string> = {
 
 const langPaths: Record<string, string> = { en: '/', de: '/de/', fr: '/fr/' };
 const faqPaths: Record<string, string> = { en: '/faq', de: '/de/faq', fr: '/fr/faq' };
+
+const statsLinks: Partial<Record<string, { text: string; url: string }>> = {
+  en: { text: 'UK National Lottery draw analysis', url: 'https://national-lottery-statistics.lawley.de' },
+  de: { text: 'Lotto 6aus49 Ziehungsanalysen', url: 'https://lotto6aus49-statistiken.lawley.de' },
+};
+const statsLink = statsLinks[lang];
 ---
 
 <!doctype html>
@@ -99,6 +105,11 @@ const faqPaths: Record<string, string> = { en: '/faq', de: '/de/faq', fr: '/fr/f
       <a href="#download" class="btn-primary">{t.hero_cta}</a>
       <a href="#features" class="btn-secondary">{t.hero_cta_secondary}</a>
     </div>
+    {statsLink && (
+      <a href={statsLink.url} class="hero-stats-link" target="_blank" rel="noopener">
+        {statsLink.text} →
+      </a>
+    )}
     <img class="hero-image" src="/images/strategy-tracker-app-preview.png" alt="Strategy Tracker app dashboard showing lottery statistics and expected value analysis" />
   </div>
 </header>
@@ -197,6 +208,9 @@ const faqPaths: Record<string, string> = { en: '/faq', de: '/de/faq', fr: '/fr/f
   <div class="footer-inner">
     <strong>Strategy Tracker</strong>
     <p>{t.footer_tagline}</p>
+    {statsLink && (
+      <p class="footer-stats-link"><a href={statsLink.url} target="_blank" rel="noopener">{statsLink.text} →</a></p>
+    )}
     <p class="footer-copy">{t.footer_copy}</p>
   </div>
 </footer>
