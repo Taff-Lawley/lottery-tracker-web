@@ -2,6 +2,7 @@
 import { translations } from '../i18n/translations';
 import DownloadSection from './DownloadSection.astro';
 import '../styles/global.css';
+import { PREMIUM_PRICE_EUR } from '../constants';
 
 interface Props {
   lang: 'en' | 'de' | 'fr';
@@ -49,7 +50,7 @@ const content: Record<string, FAQContent> = {
           },
           {
             q: 'What is included in premium?',
-            a: 'Premium unlocks all generators, full frequency analysis, birthday bias analysis, pairs & triplets analysis, and access to all supported lotteries. It\'s €4.99/month.',
+            a: `Premium unlocks all generators, full frequency analysis, birthday bias analysis, pairs & triplets analysis, and access to all supported lotteries. It's €${PREMIUM_PRICE_EUR.toFixed(2)}/month.`,
           },
         ],
       },
@@ -151,7 +152,7 @@ const content: Record<string, FAQContent> = {
           },
           {
             q: 'Was ist im Premium-Abo enthalten?',
-            a: 'Premium schaltet alle Generatoren, die vollständige Häufigkeitsanalyse, die Geburtstags-Bias-Analyse, die Paare-&-Tripel-Analyse sowie Zugang zu allen unterstützten Lotterien frei. Preis: 4,99 €/Monat.',
+            a: `Premium schaltet alle Generatoren, die vollständige Häufigkeitsanalyse, die Geburtstags-Bias-Analyse, die Paare-&-Tripel-Analyse sowie Zugang zu allen unterstützten Lotterien frei. Preis: ${PREMIUM_PRICE_EUR.toFixed(2).replace('.', ',')} €/Monat.`,
           },
         ],
       },
@@ -253,7 +254,7 @@ const content: Record<string, FAQContent> = {
           },
           {
             q: 'Qu\'est-ce qui est inclus dans le premium ?',
-            a: 'Premium débloque tous les générateurs, l\'analyse complète des fréquences, l\'analyse du biais anniversaire, l\'analyse des paires et triplets, ainsi que l\'accès à toutes les loteries supportées. Tarif : 4,99 €/mois.',
+            a: `Premium débloque tous les générateurs, l'analyse complète des fréquences, l'analyse du biais anniversaire, l'analyse des paires et triplets, ainsi que l'accès à toutes les loteries supportées. Tarif : ${PREMIUM_PRICE_EUR.toFixed(2).replace('.', ',')} €/mois.`,
           },
         ],
       },

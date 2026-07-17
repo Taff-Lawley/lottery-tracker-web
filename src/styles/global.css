@@ -377,6 +377,8 @@ section.download-section::before {
 }
 .app-store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
 .app-store-badge svg { width: 26px; height: 26px; fill: var(--brand-dark); }
+.app-store-badge--disabled { opacity: 0.55; cursor: default; }
+.app-store-badge--disabled:hover { transform: none; box-shadow: 0 4px 24px rgba(0,0,0,0.25); }
 
 .try-web-link {
   display: block;

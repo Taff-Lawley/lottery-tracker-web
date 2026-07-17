@@ -47,7 +47,7 @@ export const translations = {
         tag: 'Landing Page',
         title: 'Strategy Tracker — Web',
         description:
-          'Marketing site for the Strategy Tracker iOS app. Multi-language (EN/DE/FR), built with Astro for fast static delivery. Covers features, FAQ, legal, and App Store download. App not yet publicly launched — legal and subscription flows are still being finalised.',
+          'Marketing site for the Strategy Tracker iOS app. Multi-language (EN/DE/FR), built with Astro for fast static delivery. Covers features, FAQ, legal, and App Store download.',
         stack: ['Astro', 'TypeScript', 'CSS', 'GitHub Actions'],
         url: 'https://strategy-tracker.lawley.de',
       },
@@ -64,7 +64,7 @@ export const translations = {
         tag: 'Web App',
         title: 'Strategy Tracker — App',
         description:
-          'Flutter web version of the iOS lottery strategy tracker. Runs in the browser with the full feature set — draw history, expected value analysis, ticket generation, and subscription management. Backend powered by Python and FastAPI with DuckDB for analytics. Covers five lotteries across multiple countries. Telegram notifications for scraper events and deploys. Not yet publicly launched.',
+          'Flutter web version of the iOS lottery strategy tracker. Runs in the browser with the full feature set — draw history, expected value analysis, ticket generation, and subscription management. Backend powered by Python and FastAPI with DuckDB for analytics. Covers six lotteries across multiple countries. Telegram notifications for scraper events and deploys.',
         stack: ['Flutter', 'Dart', 'Python', 'FastAPI', 'DuckDB', 'pytest', 'Docker', 'Fly.io', 'GitHub Actions', 'Telegram'],
         url: 'https://strategy-tracker-app.lawley.de',
       },
@@ -177,7 +177,7 @@ export const translations = {
         tag: 'Landingpage',
         title: 'Strategy Tracker — Web',
         description:
-          'Marketingseite für die Strategy Tracker iOS-App. Mehrsprachig (EN/DE/FR), mit Astro für schnelle statische Auslieferung gebaut. Enthält Features, FAQ, rechtliche Seiten und App-Store-Download. App noch nicht öffentlich verfügbar — rechtliche Seiten und Abonnement-Flows werden noch finalisiert.',
+          'Marketingseite für die Strategy Tracker iOS-App. Mehrsprachig (EN/DE/FR), mit Astro für schnelle statische Auslieferung gebaut. Enthält Features, FAQ, rechtliche Seiten und App-Store-Download.',
         stack: ['Astro', 'TypeScript', 'CSS', 'GitHub Actions'],
         url: 'https://strategy-tracker.lawley.de',
       },
@@ -194,7 +194,7 @@ export const translations = {
         tag: 'Web-App',
         title: 'Strategy Tracker — App',
         description:
-          'Flutter-Webversion des iOS-Lotteriestrategie-Trackers. Läuft im Browser mit vollem Funktionsumfang — Ziehungshistorie, Erwartungswertanalyse, Ticketgenerierung und Abonnementverwaltung. Backend auf Basis von Python und FastAPI mit DuckDB für Analytics. Aktuell fünf Lotterien aus mehreren Ländern abgedeckt. Telegram-Benachrichtigungen für Scraper-Events und Deployments. Noch nicht öffentlich verfügbar.',
+          'Flutter-Webversion des iOS-Lotteriestrategie-Trackers. Läuft im Browser mit vollem Funktionsumfang — Ziehungshistorie, Erwartungswertanalyse, Ticketgenerierung und Abonnementverwaltung. Backend auf Basis von Python und FastAPI mit DuckDB für Analytics. Sechs Lotterien aus mehreren Ländern abgedeckt. Telegram-Benachrichtigungen für Scraper-Events und Deployments.',
         stack: ['Flutter', 'Dart', 'Python', 'FastAPI', 'DuckDB', 'pytest', 'Docker', 'Fly.io', 'GitHub Actions', 'Telegram'],
         url: 'https://strategy-tracker-app.lawley.de',
       },
