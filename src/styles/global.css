@@ -159,9 +159,14 @@ nav {
 }
 .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
+.hero-stats-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 20px;
+}
 .hero-stats-link {
   display: inline-block;
-  margin-top: 20px;
   font-size: 0.85rem;
   color: rgba(255,255,255,0.6);
   text-decoration: underline;
