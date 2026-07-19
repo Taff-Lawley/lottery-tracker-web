@@ -14,9 +14,9 @@ const base = 'https://strategy-tracker.lawley.de';
 const canonical = lang === 'en' ? `${base}/` : `${base}/${lang}/`;
 
 const descriptions: Record<string, string> = {
-  en: 'Strategy Tracker gives lottery players real statistical insights: expected value per draw, number frequency analysis, birthday bias detection and more. Available for UK, German, Canadian, Irish, Austrian and Swiss lotteries.',
-  de: 'Strategy Tracker liefert Lottospielern echte statistische Einblicke: Erwartungswert pro Ziehung, Zahlenhäufigkeitsanalyse, Geburtstags-Bias und mehr. Verfügbar für UK, Deutschland, Kanada, Irland, Österreich und die Schweiz.',
-  fr: 'Strategy Tracker donne aux joueurs de loterie de vrais insights statistiques : valeur attendue par tirage, analyse de la fréquence des numéros, détection du biais anniversaire et plus. Disponible pour UK, Allemagne, Canada, Irlande, Autriche et Suisse.',
+  en: 'Strategy Tracker gives lottery players real statistical insights: expected value per draw, number frequency analysis, birthday bias detection and more. Available for UK, German, Canadian, Irish, Austrian, Swiss and South African lotteries.',
+  de: 'Strategy Tracker liefert Lottospielern echte statistische Einblicke: Erwartungswert pro Ziehung, Zahlenhäufigkeitsanalyse, Geburtstags-Bias und mehr. Verfügbar für UK, Deutschland, Kanada, Irland, Österreich, die Schweiz und Südafrika.',
+  fr: 'Strategy Tracker donne aux joueurs de loterie de vrais insights statistiques : valeur attendue par tirage, analyse de la fréquence des numéros, détection du biais anniversaire et plus. Disponible pour UK, Allemagne, Canada, Irlande, Autriche, Suisse et Afrique du Sud.',
 };
 
 const langPaths: Record<string, string> = { en: '/', de: '/de/', fr: '/fr/' };
@@ -208,6 +208,7 @@ const statsLinks = seoLinks[lang] ?? [];
       <div class="country-chip"><span class="country-flag">🇮🇪</span> Irish Lotto</div>
       <div class="country-chip"><span class="country-flag">🇦🇹</span> Austrian Lotto</div>
       <div class="country-chip"><span class="country-flag">🇨🇭</span> Swiss Lotto</div>
+      <div class="country-chip"><span class="country-flag">🇿🇦</span> SA Lotto</div>
     </div>
   </div>
 </section>
