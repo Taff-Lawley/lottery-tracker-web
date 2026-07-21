@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://strategy-tracker.lawley.de/sitemap.xml
+Sitemap: https://strategy-tracker.lawley.de/sitemap-index.xml
